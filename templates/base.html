@@ -9,17 +9,17 @@
   <title>Smart Education System</title>
   <!-- base:css -->
   <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css'%}">
-  <link rel="stylesheet" href="{% static 'vendors/base/vendor.bundle.base.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{$ static 'vendors/base/vendor.bundle.base.css' %}">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css'%}"/>
-  <link rel="stylesheet" href="{% static 'vendors/font-awesome/css/font-awesome.min.css'%}">
+  <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars-o.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars.css' %}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
 </head>
@@ -28,9 +28,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"> <img src="{% static 'images/edutech_logo.gif' %}" alt="logo"/> </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{% static 'images/logo-mini.svg' %}" alt="logo"/></a>
-      </div>
+        <a class="navbar-brand brand-logo" href="index.html"><img src="{% static 'images/ets.gif'%}" alt="logo"/></a>
+       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
@@ -53,13 +52,13 @@
             </li>
           <li class="nav-item dropdown d-flex">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-air-play mx-0"></i>
+              <i class="icon-video mx-0"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                    <img src="{% static 'images/rahi.jpg' %}" alt="image" class="profile-pic">
+                    <img src="{% static 'images/faces/face4.jpg' %}" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -121,84 +120,84 @@
       </div>
     </nav>
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid  page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
           <div class="user-image">
-            <img src="{% static 'images/rahi.jpg' %}">
+            <img src="{% static 'images/rahi.jpg'%}">
           </div>
           <div class="user-name">
-              Imran Hasan (Rahi)
+              Imran Hasan Rahi
           </div>
           <div class="user-designation">
-              CTO
+              Software Developer
           </div>
         </div>
         <ul class="nav">
+
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="icon-box menu-icon"></i>
+            <a class="nav-link" href="#">
+              <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-disc menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-              </ul>
-            </div>
+            <a class="nav-link">
+              <i class="icon-monitor menu-icon"></i>
+              <span class="menu-title">Node Info</span>
+             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <i class="icon-file menu-icon"></i>
-              <span class="menu-title">Form elements</span>
-            </a>
+            <a class="nav-link">
+              <i class="icon-folder menu-icon"></i>
+              <span class="menu-title">Course Meterials</span>
+             </a>
           </li>
+
+
           <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-              <i class="icon-pie-graph menu-icon"></i>
-              <span class="menu-title">Charts</span>
+            <a class="nav-link" href="#">
+              <i class="icon-stack menu-icon"></i>
+              <span class="menu-title">Schools</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <i class="icon-command menu-icon"></i>
-              <span class="menu-title">Tables</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/icons/feather-icons.html">
-              <i class="icon-help menu-icon"></i>
-              <span class="menu-title">Icons</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" href="#">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">Teachers</span>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="docs/documentation.html">
-              <i class="icon-book menu-icon"></i>
-              <span class="menu-title">Documentation</span>
+            <a class="nav-link" href="#">
+              <i class="icon-paper-stack menu-icon"></i>
+              <span class="menu-title">Class Routine</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-align-left menu-icon"></i>
+              <span class="menu-title">Notice</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="icon-camera menu-icon"></i>
+              <span class="menu-title">Live Footage</span>
+             </a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-video menu-icon"></i>
+              <span class="menu-title">Live Stream Info</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-check menu-icon"></i>
+              <span class="menu-title">Operational History</span>
             </a>
           </li>
         </ul>
@@ -209,7 +208,7 @@
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
               <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
-              <p class="font-weight-normal mb-2 text-muted"><script>document.write(new Date())</script></p>
+              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
             </div>
           </div>
 
@@ -233,7 +232,7 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-  <script src="{% static 'vendors/base/vendor.bundle.base.js' %}"></script>
+  <script src="{% static 'vendors/base/vendor.bundle.base.js'%}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -245,9 +244,10 @@
   <!-- plugin js for this page -->
   <script src="{% static 'vendors/chart.js/Chart.min.js'%}"></script>
   <script src="{% static 'vendors/jquery-bar-rating/jquery.barrating.min.js'%}"></script>
+
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
-  <script src="{% static 'js/dashboard.js'%}"></script>
+  <!-- <script src="js/dashboard.js"></script> -->
   <!-- End custom js for this page-->
 </body>
 
