@@ -1,17 +1,20 @@
 from django.contrib import admin
-from django.apps import apps
+
+# Register your models here.
 from .models import District, Division, Upazila, Union,School
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-
+################# model Register with import_export module #####################
 # Union
 class UnionResource(resources.ModelResource):
     class Meta:
         model = Union
 @admin.register(Union)
 class UnionAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ('name','upazila','district','division')
+    list_filter = ('upazila__name','upazila__district__name','upazila__district__division__name')
+
 
 # Upazila
 class UpazilaResource(resources.ModelResource):
@@ -19,15 +22,18 @@ class UpazilaResource(resources.ModelResource):
         model = Upazila
 @admin.register(Upazila)
 class UpazilaAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ('name','district','division')
+    list_filter = ('district__name','district__division__name',)
 
 #District
 class DistrictResource(resources.ModelResource):
     class Meta:
         model = District
+
 @admin.register(District)
 class DistrictAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ('name','division')
+    list_filter = ('division__name',)
 
 #Division
 class DivisionResource(resources.ModelResource):
@@ -36,14 +42,10 @@ class DivisionResource(resources.ModelResource):
 @admin.register(Division)
 class DivisionAdmin(ImportExportModelAdmin):
     pass
+###########################################################
+
 
 @admin.register(School)
 class SchoolAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',),}
-
-
-
-admin.site.site_title = "Smart Education System"
-admin.site.site_header = "Smart Education System"
-admin.site.site_index_title = "Smart Education System"
 
