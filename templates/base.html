@@ -7,6 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Smart Education System</title>
+
+<!-- Material Design Bootstrap -->
+
   <!-- base:css -->
   <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
@@ -22,6 +25,7 @@
   <link rel="stylesheet" href="{% static 'css/style.css'%}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 </head>
 <body>
   <div class="container-scroller">
@@ -48,7 +52,8 @@
         </ul>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown d-lg-flex d-none">
-                <button type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+                <button  data-toggle="modal" data-target="#centralModalSm" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+
             </li>
           <li class="nav-item dropdown d-flex">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
@@ -134,10 +139,12 @@
               Software Developer
           </div>
         </div>
+
+        {% with request.resolver_match.url_name as url_name %}
         <ul class="nav">
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {% if url_name == 'dashboard'%} active {% endif %}">
+            <a class="nav-link" href="{% url 'dashboard:dashboard' %}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -156,8 +163,8 @@
           </li>
 
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {% if url_name == 'school' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'school:school' %}">
               <i class="icon-stack menu-icon"></i>
               <span class="menu-title">Schools</span>
             </a>
@@ -202,19 +209,11 @@
           </li>
         </ul>
       </nav>
+      {% endwith %}
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
-              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
-            </div>
-          </div>
 
-
-
-        </div>
+{% block body %} {% endblock body %}
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -230,6 +229,7 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
 
   <!-- base:js -->
   <script src="{% static 'vendors/base/vendor.bundle.base.js'%}"></script>

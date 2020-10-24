@@ -52,10 +52,19 @@ class School(models.Model):
     slug        = models.SlugField()
     division    = models.ForeignKey(Division,on_delete=models.CASCADE)
     district    = models.ForeignKey(District,on_delete=models.CASCADE)
+    upazila     = models.ForeignKey(Upazila,on_delete=models.CASCADE)
+    union       = models.ForeignKey(Union,on_delete=models.CASCADE)
+    village     = models.CharField(max_length=50)
+   #image       = models.ImageField(upload_to='school',default)
 
+    created     =models.DateTimeField(auto_now_add=True)
+    updated     =models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['-created']
 
 @receiver(pre_save,sender=School)
 def pre_save_slug(sender,instance,**kwargs):

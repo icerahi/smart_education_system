@@ -2,5 +2,5 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('',views.school,name='home'),
+    path('school/',views.SchoolCreateAndListView.as_view(),name='school'),
 ]
