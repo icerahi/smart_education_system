@@ -1,7 +1,7 @@
 
 
 <!-- Central Modal Small -->
-<div class="modal fade" id="school_create_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="school_update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
 
   <!-- Change class .modal-sm to change the size of the modal -->
@@ -10,7 +10,7 @@
 
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel">Create a new school</h4>
+        <h4 class="modal-title w-100" id="myModalLabel">Update School Information</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,6 +20,7 @@
 
 
             <p class="display4 text-dark"> Address Information</p>
+
                   <form class="form-sample" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
@@ -92,13 +93,13 @@
 
             </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-        <button type="reset" class="btn btn-outline-warning btn-icon-text">
-          <i class="mdi mdi-reload btn-icon-prepend"></i>Reset</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+               <button type="reset" class="btn btn-outline-warning btn-icon-text">
+                <i class="mdi mdi-reload btn-icon-prepend"></i>Reset</button>
 
-        <button type="submit" class="btn btn-outline-success btn-icon-text">
+            <button type="submit" class="btn btn-outline-success btn-icon-text">
                           <i class="mdi mdi-file-check btn-icon-prepend"></i>
-                          Create
+                          Save
                         </button>
       </div>
 

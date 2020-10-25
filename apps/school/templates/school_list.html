@@ -39,12 +39,13 @@
               </thead>
               <tbody>
               {% for school in object_list %}
+
                 <tr>
                   <td>
                     {{ school.school_id }}
                   </td>
                   <td>
-                      {{ school.name }}
+                    <a href="{{ school.get_absolute_url }}">{{ school.name }}</a>
                   </td>
                   <td>
                     {{ school.village }}

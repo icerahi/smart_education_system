@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="content-wrapper">
+
+<div class="card-body">
+                  <h4 class="card-title">School Information</h4>
+    <hr>
+
+    <div class="card-body">
+                  <blockquote class="blockquote blockquote-primary">
+
+                       <div class="row">
+            <div class="col-md-6">
+                <p class="blockquote-footer"> School ID: <span class="text-dark display-4"> {{ object.school_id }}</span></p>
+                <p class="blockquote-footer">Name   : <span class="text-dark display-5"> <mark>{{ object.name }}</mark></span></p>
+                <p class="blockquote-footer">Village : <span class="text-dark d4">  {{ object.village }}</span></p>
+                <p class="blockquote-footer">Union : <span class="text-dark d4">  {{ object.union }}</span></p>
+                <p class="blockquote-footer">Upazila : <span class="text-dark d4">  {{ object.upazila }}</span></p>
+                <p class="blockquote-footer">District : <span class="text-dark d4">  {{ object.district }}</span></p>
+                <p class="blockquote-footer"> Division : <span class="text-dark d4">  {{ object.division }}</span></p>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <button data-toggle="modal" data-target="#school_update_modal" type="button" class="btn btn-dark btn-icon-text">
+                    Edit
+                    <i class="mdi mdi-file-check btn-icon-append"></i>
+                </button>
+            </div>
+        </div>
+
+                </div>
+
+
+</div>
+{% include 'school_update_modal.html' %}
+</div>
+
+{% endblock %}

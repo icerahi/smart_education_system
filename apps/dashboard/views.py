@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 # Create your views here.
-from related_select.views import RelatedSelectView
 
-from apps.school.models import District, Division
+
 
 
 class Dashboard(TemplateView):
@@ -11,8 +10,3 @@ class Dashboard(TemplateView):
 
 
 
-#need to test
-
-
-def load_address(request):
-    pass

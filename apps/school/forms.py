@@ -13,7 +13,6 @@ class SchoolCreateForm(ModelForm):
 
     def __init__(self,*args,**kwargs):
         super(SchoolCreateForm, self).__init__(*args,**kwargs)
-
         self.fields['name'].widget.attrs['class'] = 'form-control'
         self.fields['division'].widget.attrs['class'] = 'form-control'
         self.fields['district'].widget.attrs['class'] = 'form-control'

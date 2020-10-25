@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #thirdparty
     'import_export',
-    'related_select',
+    'smart_selects',
     #own
     'apps.dashboard',
     'apps.school',

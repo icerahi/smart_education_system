@@ -3,7 +3,10 @@ from django.db import models
 # Create your models here.
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
+from django.urls import reverse_lazy, reverse
 from django.utils.text import slugify
+from smart_selects.db_fields import ChainedForeignKey
+
 
 class Division(models.Model):
     name   = models.CharField(verbose_name="Division",max_length=50,unique=True)
@@ -51,9 +54,12 @@ class School(models.Model):
     school_id   = models.AutoField(primary_key=True)
     slug        = models.SlugField()
     division    = models.ForeignKey(Division,on_delete=models.CASCADE)
-    district    = models.ForeignKey(District,on_delete=models.CASCADE)
-    upazila     = models.ForeignKey(Upazila,on_delete=models.CASCADE)
-    union       = models.ForeignKey(Union,on_delete=models.CASCADE)
+    district    = ChainedForeignKey(District,chained_field='division',chained_model_field='division',
+                                    show_all=False,auto_choose=True,sort=True)
+    upazila     = ChainedForeignKey(Upazila,chained_field='district',chained_model_field='district',
+                                    show_all=False,auto_choose=True,sort=True)
+    union       = ChainedForeignKey(Union,chained_field='upazila',chained_model_field='upazila',
+                                    show_all=False,auto_choose=True,sort=True)
     village     = models.CharField(max_length=50)
    #image       = models.ImageField(upload_to='school',default)
 
@@ -65,6 +71,15 @@ class School(models.Model):
 
     class Meta:
         ordering = ['-created']
+
+    def get_absolute_url(self):
+        return reverse_lazy('school:school_detail',kwargs={'pk':self.pk,'slug':self.slug})
+
+    def get_delete_url(self):
+        return reverse_lazy('school:school_delete',kwargs={'pk':self.pk,'slug':self.slug})
+
+    def get_update_url(self):
+        return reverse_lazy('school:school_update',kwargs={'pk':self.pk,'slug':self.slug})
 
 @receiver(pre_save,sender=School)
 def pre_save_slug(sender,instance,**kwargs):

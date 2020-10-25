@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('apps.dashboard.urls','dashboard'),namespace='dashboard')),
     path('', include(('apps.school.urls', 'school'), namespace='school')),
+    path('chaining/', include('smart_selects.urls')),
+
 ]

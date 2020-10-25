@@ -52,7 +52,7 @@
         </ul>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown d-lg-flex d-none">
-                <button  data-toggle="modal" data-target="#centralModalSm" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+                <button  data-toggle="modal" data-target="#school_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
 
             </li>
           <li class="nav-item dropdown d-flex">
@@ -163,7 +163,7 @@
           </li>
 
 
-          <li class="nav-item {% if url_name == 'school' %} active {% endif %}">
+          <li class="nav-item {% if url_name == 'school' or url_name == 'school_detail'  %} active {% endif %}">
             <a class="nav-link" href="{% url 'school:school' %}">
               <i class="icon-stack menu-icon"></i>
               <span class="menu-title">Schools</span>
@@ -216,15 +216,16 @@
 {% block body %} {% endblock body %}
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://www.edutechsystem.com/" target="_blank" class="text-muted">Edu Tech System</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart"></i></span>
-          </div>
-        </footer>
+
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
+          <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://www.edutechsystem.com/" target="_blank" class="text-muted">Edu Tech System</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Developed by <a href="https://fb.com/icerahi">Imran Hasan Rahi</a></span>
+          </div>
+        </footer>
     </div>
     <!-- page-body-wrapper ends -->
   </div>

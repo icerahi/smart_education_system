@@ -13,7 +13,7 @@ class UnionResource(resources.ModelResource):
 @admin.register(Union)
 class UnionAdmin(ImportExportModelAdmin):
     list_display = ('name','upazila','district','division')
-    list_filter = ('upazila__name','upazila__district__name','upazila__district__division__name')
+    list_filter = ('upazila__district__name',)
 
 
 # Upazila
@@ -23,7 +23,7 @@ class UpazilaResource(resources.ModelResource):
 @admin.register(Upazila)
 class UpazilaAdmin(ImportExportModelAdmin):
     list_display = ('name','district','division')
-    list_filter = ('district__name','district__division__name',)
+    list_filter = ('district__name',)
 
 #District
 class DistrictResource(resources.ModelResource):
