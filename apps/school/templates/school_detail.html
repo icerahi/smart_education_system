@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="content-wrapper">
+
 
 <div class="card-body">
+
                   <h4 class="card-title">School Information</h4>
     <hr>
 
@@ -19,6 +20,7 @@
                 <p class="blockquote-footer">Upazila : <span class="text-dark d4">  {{ object.upazila }}</span></p>
                 <p class="blockquote-footer">District : <span class="text-dark d4">  {{ object.district }}</span></p>
                 <p class="blockquote-footer"> Division : <span class="text-dark d4">  {{ object.division }}</span></p>
+                <p class="blockquote-footer"> Created : <span class="text-dark d4">  {{ object.created }}</span></p>
             </div>
 
             <div class="col-md-6 text-right">
@@ -34,6 +36,6 @@
 
 </div>
 {% include 'school_update_modal.html' %}
-</div>
+
 
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import forms
 from django.http import HttpResponse, HttpResponseRedirect
@@ -17,11 +18,11 @@ def school(requests):
 
 
 
-class SchoolCreateAndListView(CreateView,SuccessMessageMixin):
+class SchoolCreateAndListView(SuccessMessageMixin,CreateView):
     model = School
     form_class = SchoolCreateForm
     success_url = reverse_lazy('school:school')
-    success_message = "School has been created Successfully"
+    success_message = "New school has been created!"
     template_name = 'school_list.html'
 
     def get_context_data(self, **kwargs):
@@ -29,14 +30,17 @@ class SchoolCreateAndListView(CreateView,SuccessMessageMixin):
         context['object_list']= School.objects.all()
         return context
 
-class SchoolDetailAndUpdateView(UpdateView):
+class SchoolDetailAndUpdateView(SuccessMessageMixin,UpdateView):
     model = School
     form_class = SchoolCreateForm
     template_name = 'school_detail.html'
+    success_message = "'%(name)s' has been updated!"
 
-# redirect same page after update
+
+#redirect same page after update
     def get_success_url(self):
         self.success_url = HttpResponseRedirect("")
+
 
 #getting current object data
     def get_context_data(self, **kwargs):

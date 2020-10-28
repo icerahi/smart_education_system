@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #own
     'apps.dashboard',
     'apps.school',
+    'apps.teacher',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smart_education_system.wsgi.application'
+
 
 
 # Database
@@ -128,5 +130,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     BASE_DIR/'static',
 ]
+STATIC_ROOT = BASE_DIR /'static-root'
+
 
 MEDIA_URL ='/media/'
+MEDIA_ROOT = BASE_DIR/'media'

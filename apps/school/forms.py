@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from related_select.fields import RelatedChoiceField
+
 
 from apps.school.models import School
 

@@ -26,6 +26,8 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+
 </head>
 <body>
   <div class="container-scroller">
@@ -169,8 +171,8 @@
               <span class="menu-title">Schools</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {% if url_name == 'teacher' or url_name == 'teacher-detail' %}active {% endif %}">
+            <a class="nav-link" href="{% url 'teacher:teacher' %}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Teachers</span>
             </a>
@@ -213,23 +215,30 @@
       <!-- partial -->
       <div class="main-panel">
 
+
+<div class="content-wrapper">
 {% block body %} {% endblock body %}
+</div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
 
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
-          <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://www.edutechsystem.com/" target="_blank" class="text-muted">Edu Tech System</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Developed by <a href="https://fb.com/icerahi">Imran Hasan Rahi</a></span>
-          </div>
-        </footer>
+
     </div>
     <!-- page-body-wrapper ends -->
+
   </div>
   <!-- container-scroller -->
+
+
+   <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://www.edutechsystem.com/" target="_blank" class="text-muted">Edu Tech System</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Developed by <a href="https://fb.com/icerahi" target="_blank">Imran Hasan Rahi</a></span>
+          </div>
+        </footer>
 
 
   <!-- base:js -->
@@ -250,7 +259,21 @@
   <!-- Custom js for this page-->
   <!-- <script src="js/dashboard.js"></script> -->
   <!-- End custom js for this page-->
-</body>
+<!-- JQuery -->
+
+<!-- Message Modal -->
+        {% if messages %}
+      {% for message in messages %}
+  {% include 'message_modal.html' %}
+<script type="application/javascript">
+    $('#message').modal({show:true});
+     setTimeout(function(){
+    $('#message').modal('hide');
+    },3000);
+</script>
+      {% endfor %}
+    {% endif %}
+ </body>
 
 </html>
 
