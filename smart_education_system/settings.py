@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #thirdparty
     'import_export',
     'smart_selects',
+
     #own
     'apps.dashboard',
     'apps.school',

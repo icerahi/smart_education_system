@@ -3,4 +3,12 @@
 {% block body %}
 
 <p class="lead">This is teachers page</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.media }}
+    {{ form.as_p}}
+    <input type="submit" value="Submit">
+</form>
 {% endblock %}

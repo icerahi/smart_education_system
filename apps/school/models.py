@@ -50,8 +50,8 @@ class Union(models.Model):
 
 
 class School(models.Model):
-    name        = models.CharField(max_length=300)
-    school_id   = models.AutoField(primary_key=True)
+    name        = models.CharField(max_length=100)
+    school_id   = models.AutoField(primary_key=True,unique=True)
     slug        = models.SlugField()
     division    = models.ForeignKey(Division,on_delete=models.CASCADE)
     district    = ChainedForeignKey(District,chained_field='division',chained_model_field='division',
@@ -62,12 +62,11 @@ class School(models.Model):
                                     show_all=False,auto_choose=True,sort=True)
     village     = models.CharField(max_length=50)
    #image       = models.ImageField(upload_to='school',default)
-
     created     =models.DateTimeField(auto_now_add=True)
     updated     =models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return str(self.school_id)
 
     class Meta:
         ordering = ['-created']
