@@ -6,10 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Smart Education System</title>
-
-<!-- Material Design Bootstrap -->
-
+  <title>{% block title %} {% endblock title%}</title>
   <!-- base:css -->
   <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
@@ -18,13 +15,15 @@
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}"/>
   <link rel="stylesheet" href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}">
-  <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars-o.css' %}">
-  <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars-o.css'%}">
+  <link rel="stylesheet" href="{% static 'vendors/jquery-bar-rating/fontawesome-stars.css'%}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{% static 'css/style.css'%}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+  <link rel="shortcut icon" href="{% static 'images/favicon.png'%}" />
+
+<!--  custom css-->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
 
@@ -52,10 +51,10 @@
             </div>
           </li>
         </ul>
+        {% with request.resolver_match.url_name as url_name %}
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown d-lg-flex d-none">
-                <button  data-toggle="modal" data-target="#school_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
-
+            {% block create %} {% endblock create %}
             </li>
           <li class="nav-item dropdown d-flex">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
@@ -142,7 +141,7 @@
           </div>
         </div>
 
-        {% with request.resolver_match.url_name as url_name %}
+
         <ul class="nav">
 
           <li class="nav-item {% if url_name == 'dashboard'%} active {% endif %}">
@@ -171,7 +170,7 @@
               <span class="menu-title">Schools</span>
             </a>
           </li>
-          <li class="nav-item {% if url_name == 'teacher' or url_name == 'teacher-detail' %}active {% endif %}">
+          <li class="nav-item {% if url_name == 'teacher' or url_name == 'teacher_detail' %}active {% endif %}">
             <a class="nav-link" href="{% url 'teacher:teacher' %}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Teachers</span>
@@ -242,7 +241,7 @@
 
 
   <!-- base:js -->
-  <script src="{% static 'vendors/base/vendor.bundle.base.js'%}"></script>
+  <script src="{% static 'vendors/base/vendor.bundle.base.js' %}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -254,22 +253,22 @@
   <!-- plugin js for this page -->
   <script src="{% static 'vendors/chart.js/Chart.min.js'%}"></script>
   <script src="{% static 'vendors/jquery-bar-rating/jquery.barrating.min.js'%}"></script>
-
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
-  <!-- <script src="js/dashboard.js"></script> -->
+  <script src="{% static 'js/dashboard.js'%}"></script>
   <!-- End custom js for this page-->
-<!-- JQuery -->
 
 <!-- Message Modal -->
         {% if messages %}
       {% for message in messages %}
   {% include 'message_modal.html' %}
+
 <script type="application/javascript">
-    $('#message').modal({show:true});
-     setTimeout(function(){
+    $('#message').modal({backdrop:false,show:true});
+
+    setTimeout(function(){
     $('#message').modal('hide');
-    },3000);
+    },2000);
 </script>
       {% endfor %}
     {% endif %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="card-body">
+
+ <h4 class="card-title">Teacher Information</h4>
+    <hr>
+
+    <div class="card-body">
+
+        <!-- Grid row -->
+<div class="row">
+
+  <!-- Grid column -->
+  <div class="col-lg-10 col-xl-8">
+
+    <div class="media d-block d-md-flex">
+      <img height="30%" width="20%" class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto" src="{{object.image.url}}"
+        alt="Avatar">
+      <div class="media-body text-center text-md-left ml-md-3 ml-0">
+        <h5 class="mt-0 font-weight-bold blue-text">{{object.name}}</h5>
+
+                 <p class="display-7"> Teacher ID: <span class="text-dark display-4"> {{ object.teacher_id }}</span></p>
+                 <p class="display-7">Designation : <span class="text-dark d4">  {{ object.designation }}</span></p>
+                <p class="display-7">School ID : <span class="text-dark d4">  {{ object.school_id }}</span></p>
+                <p class="display-7">School Name : <span class="text-dark d4">  {{ object.school_name }}</span></p>
+                <p class="display-7">Created : <span class="text-dark d4">  {{ object.created }}</span></p>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Grid column -->
+  <div class="col-lg-2 col-xl-4">
+      <div class="col-md-6 text-right">
+                <button data-toggle="modal" data-target="#teacher_update_modal" type="button" class="btn btn-dark btn-icon-text">
+                    Edit
+                    <i class="mdi mdi-file-check btn-icon-append"></i>
+                </button>
+            </div>
+  </div>
+</div>
+<!-- Grid row -->
+
+
+</div>
+</div>
+
+
+{% include 'teacher_update_modal.html' %}
+
+
+{% endblock %}

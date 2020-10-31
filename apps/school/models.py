@@ -74,11 +74,7 @@ class School(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('school:school_detail',kwargs={'pk':self.pk,'slug':self.slug})
 
-    def get_delete_url(self):
-        return reverse_lazy('school:school_delete',kwargs={'pk':self.pk,'slug':self.slug})
 
-    def get_update_url(self):
-        return reverse_lazy('school:school_update',kwargs={'pk':self.pk,'slug':self.slug})
 
 @receiver(pre_save,sender=School)
 def pre_save_slug(sender,instance,**kwargs):

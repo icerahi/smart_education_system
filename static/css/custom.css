@@ -2,3 +2,6 @@
 
 .form-control{background-color:#b9b9b978;}
 
+modal-backdrop {
+    display:none;
+}

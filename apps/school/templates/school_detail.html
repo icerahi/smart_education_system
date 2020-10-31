@@ -1,41 +1,60 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 
 {% block body %}
 
 
 <div class="card-body">
 
-                  <h4 class="card-title">School Information</h4>
+ <h4 class="card-title">School Information</h4>
     <hr>
 
     <div class="card-body">
-                  <blockquote class="blockquote blockquote-primary">
 
-                       <div class="row">
-            <div class="col-md-6">
-                <p class="blockquote-footer"> School ID: <span class="text-dark display-4"> {{ object.school_id }}</span></p>
-                <p class="blockquote-footer">Name   : <span class="text-dark display-5"> <mark>{{ object.name }}</mark></span></p>
-                <p class="blockquote-footer">Village : <span class="text-dark d4">  {{ object.village }}</span></p>
-                <p class="blockquote-footer">Union : <span class="text-dark d4">  {{ object.union }}</span></p>
-                <p class="blockquote-footer">Upazila : <span class="text-dark d4">  {{ object.upazila }}</span></p>
-                <p class="blockquote-footer">District : <span class="text-dark d4">  {{ object.district }}</span></p>
-                <p class="blockquote-footer"> Division : <span class="text-dark d4">  {{ object.division }}</span></p>
-                <p class="blockquote-footer"> Created : <span class="text-dark d4">  {{ object.created }}</span></p>
-            </div>
+        <!-- Grid row -->
+<div class="row">
 
-            <div class="col-md-6 text-right">
+  <!-- Grid column -->
+  <div class="col-lg-10 col-xl-8">
+
+    <div class="media d-block d-md-flex">
+
+      <div class="media-body text-center text-md-left ml-md-3 ml-0">
+       <p class="display-7">School Name : <span class="mt-0 font-weight-bold blue-text display-5"><mark>{{ object.name }}</mark></span></p>
+
+                 <p class="display-7"> School ID : <span class="text-dark display-4">  {{ object.school_id }}</span></p>
+                 <p class="display-7"> Village : <span class="text-dark d4"> {{ object.village }}</span></p>
+                <p class="display-7"> Union : <span class="text-dark d4">   {{ object.union }}</span></p>
+                <p class="display-7"> Upazila : <span class="text-dark d4">  {{ object.upazila }}</span></p>
+                <p class="display-7"> District : <span class="text-dark d4"> {{ object.district }}</span></p>
+                <p class="display-7"> Division : <span class="text-dark d4"> {{ object.division }}</span></p>
+                <p class="display-7"> Created : <span class="text-dark d4">  {{ object.created }}</span></p>
+
+
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Grid column -->
+  <div class="col-lg-2 col-xl-4">
+      <div class="col-md-6 text-right">
                 <button data-toggle="modal" data-target="#school_update_modal" type="button" class="btn btn-dark btn-icon-text">
                     Edit
                     <i class="mdi mdi-file-check btn-icon-append"></i>
                 </button>
             </div>
-        </div>
-
-                </div>
+  </div>
+</div>
+<!-- Grid row -->
 
 
 </div>
+</div>
+
+
 {% include 'school_update_modal.html' %}
 
 
 {% endblock %}
+
+

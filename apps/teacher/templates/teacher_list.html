@@ -1,14 +1,67 @@
 {% extends 'base.html' %}
-
+{% block create %}
+<button  data-toggle="modal" data-target="#teacher_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+{% endblock create %}
 {% block body %}
 
-<p class="lead">This is teachers page</p>
+        <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
 
-<form action="" method="POST">
-    {% csrf_token %}
+          <h4 class="display4">Registered Teacher List</h4>
 
-    {{ form.media }}
-    {{ form.as_p}}
-    <input type="submit" value="Submit">
-</form>
-{% endblock %}
+          <div class="table-responsive ">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Designation
+                  </th>
+                  <th>
+                    School ID
+                  </th>
+                  <th>
+                    School Name
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for object in object_list %}
+
+                <tr>
+                  <td>
+                    {{ object.school_id }}
+                  </td>
+                  <td>
+                    <mark><a href="{{object.get_absolute_url}}">{{object.name}}</a></mark>
+                  </td>
+                  <td>
+                    {{ object.designation }}
+                  </td>
+                  <td>
+                     {{ object.school_id }}
+                  </td>
+                  <td>
+                      {{ object.school_name }}
+                  </td>
+                </tr>
+
+              {% endfor %}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% include 'teacher_create_modal.html' %}
+{% endblock body %}
