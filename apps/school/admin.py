@@ -10,6 +10,7 @@ from import_export.admin import ImportExportModelAdmin
 class UnionResource(resources.ModelResource):
     class Meta:
         model = Union
+
 @admin.register(Union)
 class UnionAdmin(ImportExportModelAdmin):
     list_display = ('name','upazila','district','division')

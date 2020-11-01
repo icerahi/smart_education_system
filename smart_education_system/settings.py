@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     #thirdparty
     'import_export',
     'smart_selects',
+    'django_cleanup',
 
     #own
     'apps.dashboard',
     'apps.school',
     'apps.teacher',
+    'apps.course_material',
 ]
 
 MIDDLEWARE = [
