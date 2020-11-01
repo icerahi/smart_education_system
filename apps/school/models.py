@@ -14,11 +14,17 @@ class Division(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    class Meta:
+        verbose_name_plural = "    Divisions"
+
 class District(models.Model):
     name    = models.CharField(verbose_name="District",max_length=50,unique=True)
     division= models.ForeignKey(Division,on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.name}'
+
+    class Meta:
+        verbose_name_plural = "   Districts"
 
 class Upazila(models.Model):
     name    = models.CharField(verbose_name="Upazila",max_length=50)
@@ -26,6 +32,9 @@ class Upazila(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    class Meta:
+        verbose_name_plural = "  Upazilas"
 
     #displaying foriegnkey name for admin
     def get_division(self):
@@ -38,6 +47,9 @@ class Union(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    class Meta:
+        verbose_name_plural = " Unions"
 
     #displaying foreignkey name for admin
     def get_district(self):
@@ -70,6 +82,7 @@ class School(models.Model):
 
     class Meta:
         ordering = ['-created']
+        verbose_name_plural = "Schools"
 
     def get_absolute_url(self):
         return reverse_lazy('school:school_detail',kwargs={'pk':self.pk,'slug':self.slug})
