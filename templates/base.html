@@ -156,8 +156,8 @@
               <span class="menu-title">Node Info</span>
              </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">
+          <li class="nav-item {% if url_name == 'course_material' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'course_material:course_material' %}">
               <i class="icon-folder menu-icon"></i>
               <span class="menu-title">Course Meterial</span>
              </a>

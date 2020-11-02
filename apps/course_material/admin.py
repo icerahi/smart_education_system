@@ -13,16 +13,16 @@ class ClassAdmin(admin.ModelAdmin):
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    list_filter = ('_class__name',)
+    list_filter = ('class_name__name',)
 
 @admin.register(Chapter)
 class ChapterAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    list_filter = ('_class__name','subject__name',)
+    list_filter = ('class_name__name','subject__name',)
 
 @admin.register(CourseMaterial)
 class CourseMaterialAdmin(admin.ModelAdmin):
-    list_display = ('_class','subject','chapter','content')
-    list_filter = ('_class__name','subject__name','chapter__name',)
+    list_display = ('class_name','subject','chapter','content')
+    list_filter = ('class_name__name','subject__name','chapter__name',)
 
 

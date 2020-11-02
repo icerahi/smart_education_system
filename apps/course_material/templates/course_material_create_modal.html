@@ -1,0 +1,100 @@
+
+
+<!-- Central Modal Small -->
+<div class="modal fade" id="course_material_create_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Create a new course</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12 grid-margin">
+
+
+            <p class="display4 text-dark"> Course Information</p>
+                  <form class="form-sample" action="" method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                     {{ form.media.js }}
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Class</label>
+                          <div class="col-sm-9">
+                           {{ form.class_name.errors }}
+                           {{ form.class_name }}
+
+                          </div>
+                        </div>
+                      </div>
+                     <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Subject</label>
+                          <div class="col-sm-9">
+                           {{ form.subject.errors }}
+                           {{ form.subject }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Chapter</label>
+                          <div class="col-sm-9">
+                            {{ form.chapter.errors }}
+                            {{ form.chapter }}
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+
+
+                      <div class="row">
+<!--                          <p class="display4 text-dark"> School Information</p>-->
+
+                     <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Content</label>
+                          <div class="col-sm-9">
+                            {{ form.content.errors }}
+                            {{ form.content }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+            </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="reset" class="btn btn-outline-warning btn-icon-text">
+          <i class="mdi mdi-reload btn-icon-prepend"></i>Reset</button>
+
+        <button type="submit" class="btn btn-outline-success btn-icon-text">
+                          <i class="mdi mdi-file-check btn-icon-prepend"></i>
+                          Create
+                        </button>
+      </div>
+
+                  </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Central Modal Small -->
