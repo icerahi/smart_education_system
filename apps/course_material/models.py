@@ -16,7 +16,7 @@ class Class(models.Model):
         verbose_name_plural = "   Classes"
 
 class Subject(models.Model):
-    class_name = models.ForeignKey(Class,on_delete=models.CASCADE)
+    _class = models.ManyToManyField(Class)
     name       = models.CharField(max_length=20,unique=True)
 
     def __str__(self):
@@ -24,10 +24,10 @@ class Subject(models.Model):
 
     class Meta:
         verbose_name_plural = "  Subjects"
+
 class Chapter(models.Model):
-    class_name = models.ForeignKey(Class,on_delete=models.CASCADE)
-    subject_name = ChainedForeignKey(Subject,chained_field='class_name',chained_model_field='class_name',
-                                     show_all=False,auto_choose=True,sort=True)
+    _class = models.ManyToManyField(Class)
+    subject = models.ManyToManyField(Subject)
     name        = models.CharField(max_length=20,unique=True)
 
     def __str__(self):
@@ -40,20 +40,20 @@ class Chapter(models.Model):
 def content_file_name(instance,filename):
     ext = filename.split('.')[-1]
     print(ext)
-    filename=f'chapter_{instance.chapter_name.name}.'+ext
+    filename=f'chapter_{instance.chapter.name}.'+ext
     print(filename)
-    return os.path.join(f'course_material/class_{instance.class_name.name}/{instance.subject_name.name}/chapter_{instance.chapter_name.name}/'+str(filename))
+    return os.path.join(f'course_material/class_{instance._class.name}/{instance.subject.name}/chapter_{instance.chapter.name}/'+str(filename))
 
 class CourseMaterial(models.Model):
-    class_name = models.ForeignKey(Class,on_delete=models.CASCADE)
-    subject_name = ChainedForeignKey(Subject,chained_field='class_name',chained_model_field='class_name',
+    _class = models.ForeignKey(Class,on_delete=models.CASCADE)
+    subject = ChainedForeignKey(Subject,chained_field='_class',chained_model_field='_class',
                                      show_all=False,auto_choose=True,sort=True)
-    chapter_name = ChainedForeignKey(Chapter,chained_field='subject_name',chained_model_field='subject_name',
-                                     show_all=False,auto_choose=True,sort=True)
+    chapter = ChainedForeignKey(Chapter,chained_field='subject',chained_model_field='subject',
+                                     show_all=False,auto_choose=True,sort=True,unique=True)
     content     = models.FileField(upload_to=content_file_name,unique=True)
 
     def __str__(self):
-        return f'content of {self.chapter_name.name}'
+        return f'content of {self.chapter.name}'
 
     class Meta:
         verbose_name_plural = "CourseMeterials"
