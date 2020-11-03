@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 
@@ -14,12 +15,16 @@ class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
     form_class = CourseMaterialForm
     template_name = 'course_material_list.html'
     success_url = reverse_lazy('course_material:course_material')
-    success_message = "Material Created Successfully!"
+    success_message = "<strong>Material Created Successfully!</strong>"
+    error_message = """<strong>Error creating New Course Material!</strong> \n Check the Create Form"""
 
     def form_valid(self, form):
         form = CourseMaterialForm(self.request.POST,self.request.FILES)
         return super(CourseMaterialCreateAndListView, self).form_valid(form)
 
+    def form_invalid(self, form):
+        messages.error(self.request,self.error_message )
+        return super(CourseMaterialCreateAndListView, self).form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super(CourseMaterialCreateAndListView, self).get_context_data(**kwargs)

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'smart_selects',
     'django_cleanup',
 
+
     #own
     'apps.dashboard',
     'apps.school',

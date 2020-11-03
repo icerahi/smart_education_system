@@ -16,8 +16,9 @@
               <thead>
                 <tr>
                   <th>
-                    class
+                    class  Subject Chapter Content
                   </th>
+
 
                 </tr>
               </thead>
@@ -28,6 +29,9 @@
 
                   <td>
                     <mark><a href="{{object.get_absolute_url}}">{{object.class_name}}</a></mark>
+                    <mark><a href="{{object.get_absolute_url}}">{{object.subject}}</a></mark>
+                    <mark><a href="{{object.get_absolute_url}}">{{object.chapter}}</a></mark>
+                    <mark><a href="{{object.get_absolute_url}}">{{object.content}}</a></mark>
                   </td>
 
                 </tr>
@@ -41,6 +45,7 @@
         </div>
       </div>
     </div>
+
 
 {% include 'course_material_create_modal.html' %}
 {% endblock body %}

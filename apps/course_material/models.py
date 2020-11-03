@@ -39,9 +39,7 @@ class Chapter(models.Model):
 #FILE   STORING
 def content_file_name(instance,filename):
     ext = filename.split('.')[-1]
-    print(ext)
     filename=f'chapter_{instance.chapter.name}.'+ext
-    print(filename)
     return os.path.join(f'course_material/class_{instance.class_name.name}/{instance.subject.name}/chapter_{instance.chapter.name}/'+str(filename))
 
 class CourseMaterial(models.Model):
@@ -49,8 +47,8 @@ class CourseMaterial(models.Model):
     subject  = ChainedForeignKey(Subject,chained_field='class_name',chained_model_field='class_name',
                                      show_all=False,auto_choose=True,sort=True)
     chapter  = ChainedForeignKey(Chapter,chained_field='subject',chained_model_field='subject',
-                                     show_all=False,auto_choose=True,sort=True,unique=True)
-    content  = models.FileField(upload_to=content_file_name,unique=True)
+                                     show_all=False,auto_choose=True,sort=True)
+    content  = models.FileField(upload_to=content_file_name)
 
     created   = models.DateTimeField(auto_now_add=True)
     updated   = models.DateTimeField(auto_now=True)
@@ -61,4 +59,11 @@ class CourseMaterial(models.Model):
         return f'content of {self.chapter.name}'
 
     class Meta:
+        #class_name,subject,chapter can't be multiple,all least one field below need to be non same.
+        constraints =[
+            models.UniqueConstraint(
+                fields=['class_name','subject','chapter'],
+                name = 'unique content'
+            )
+        ]
         verbose_name_plural = "CourseMeterials"

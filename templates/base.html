@@ -261,6 +261,8 @@
 <!-- Message Modal -->
         {% if messages %}
       {% for message in messages %}
+
+
   {% include 'message_modal.html' %}
 
 <script type="application/javascript">
@@ -268,7 +270,7 @@
 
     setTimeout(function(){
     $('#message').modal('hide');
-    },2000);
+    },3000);
 </script>
       {% endfor %}
     {% endif %}

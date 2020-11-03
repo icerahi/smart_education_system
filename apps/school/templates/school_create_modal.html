@@ -28,6 +28,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Division</label>
                           <div class="col-sm-9">
+                              <p class="text-danger">{{ form.division.errors }}</p>
                            {{ form.division}}
                           </div>
                         </div>
@@ -36,6 +37,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">District</label>
                           <div class="col-sm-9">
+                       <p class="text-danger">{{ form.district.errors }}</p>
                            {{ form.district }}
                           </div>
                         </div>
@@ -46,6 +48,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Upazila</label>
                           <div class="col-sm-9">
+                       <p class="text-danger">{{ form.upazila.errors }}</p>
                             {{ form.upazila }}
                           </div>
                         </div>
@@ -55,6 +58,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Union</label>
                           <div class="col-sm-9">
+                     <p class="text-danger">{{ form.union.errors }}</p>
                             {{ form.union }}
                           </div>
                         </div>
@@ -67,6 +71,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Village</label>
                           <div class="col-sm-9">
+                 <p class="text-danger">{{ form.village.errors }}</p>
                             {{ form.village }}
                           </div>
                         </div>
@@ -80,6 +85,7 @@
                           <label class="col-sm-3 col-form-label">School Name</label>
                           <div class="col-sm-9">
                              {{ form.media.js }}
+                         <p class="text-danger">{{ form.name.errors }}</p>
                             {{ form.name }}
                           </div>
                         </div>
