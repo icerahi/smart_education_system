@@ -5,47 +5,37 @@
 {% block body %}
 
 
-        <div class="col-lg-12 grid-margin stretch-card">
+ <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
 
           <h4 class="display4">Course List List</h4>
 
-          <div class="table-responsive ">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>
-                    class  Subject Chapter Content
-                  </th>
+          <hr>
+    {% for class in classes %}
+ <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+  <li class="nav-item">
+    <a class="nav-link active" id="class-{{class.name}}-tab" data-toggle="tab" href="#class-{{class.name}}" role="tab" aria-controls="class-{{class.name}}"
+      aria-selected="true">Class {{class.name}}</a>
+  </li>
+
+</ul>
+{% endfor %}
+<div class="tab-content" id="myTabContent">
+{% for class in classes %}
+  <div class="tab-pane fade show active" id="class-{{class.name}}" role="tabpanel" aria-labelledby="class-{{class.name}}-tab">
+dfgtdtgdtg
 
 
-                </tr>
-              </thead>
-              <tbody>
-              {% for object in object_list %}
 
-                <tr>
+  </div>
+{% endfor %}
 
-                  <td>
-                    <mark><a href="{{object.get_absolute_url}}">{{object.class_name}}</a></mark>
-                    <mark><a href="{{object.get_absolute_url}}">{{object.subject}}</a></mark>
-                    <mark><a href="{{object.get_absolute_url}}">{{object.chapter}}</a></mark>
-                    <mark><a href="{{object.get_absolute_url}}">{{object.content}}</a></mark>
-                  </td>
-
-                </tr>
-
-              {% endfor %}
-
-
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
 
-
+ </div>
 {% include 'course_material_create_modal.html' %}
 {% endblock body %}

@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from apps.course_material.forms import CourseMaterialForm
-from apps.course_material.models import CourseMaterial
+from apps.course_material.models import CourseMaterial, Class
 
 
 class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
@@ -28,5 +28,6 @@ class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseMaterialCreateAndListView, self).get_context_data(**kwargs)
-        context['object_list'] = CourseMaterial.objects.all()
+        context['contents'] = CourseMaterial.objects.all()
+        context['classes'] = Class.objects.all()
         return context
