@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.urls import reverse_lazy
@@ -31,3 +32,15 @@ class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
         context['contents'] = CourseMaterial.objects.all()
         context['classes'] = Class.objects.all()
         return context
+
+
+def get_content(request,class_name,subject):
+
+    content = CourseMaterial.objects.filter(class_name__name=class_name,subject__name=subject)
+    context ={
+        'object_list':content,
+        'classes':Class.objects.all(),
+        'subject':subject,
+        'class_name':class_name,
+    }
+    return render(request,'content_list.html',context)

@@ -26,7 +26,7 @@ SECRET_KEY = 'gum+p_1796_hb($1p1buj9h^&-jpwo@u-t1llg3(l-jb-dco!y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

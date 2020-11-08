@@ -4,38 +4,36 @@
 {% endblock create %}
 {% block body %}
 
+    <nav class="navbar card col-lg-12 col-12 p-0 d-flex flex-row">
 
- <div class="col-lg-12 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
+      <div class="navbar-menu-wrapper card-body d-flex align-items-center justify-content-start">
+      {% for class in classes %}
+        <ul class="navbar-nav navbar-nav-left">
+          <li class="nav-item dropdown d-flex ">
+            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="class{{class.id}}" href="#" data-toggle="dropdown">
+             Class {{class.name}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="class{{class.id}}">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Subjects</p>
+              {% for subject in class.subject_set.all %}
+              <a class="dropdown-item preview-item" href="{% url 'course_material:get_content' class_name=class.name subject=subject.name %}">
+                  {{subject.name}}
+              </a>
+              {% empty %}
+              <p>No Subjects yet!</p>
+              {% endfor %}
+            </div>
+          </li>
+        </ul>
+        {% empty %}
+        <p> No classes yet !</p>
+        {%  endfor %}
 
-          <h4 class="display4">Course List List</h4>
 
-          <hr>
-    {% for class in classes %}
- <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-  <li class="nav-item">
-    <a class="nav-link active" id="class-{{class.name}}-tab" data-toggle="tab" href="#class-{{class.name}}" role="tab" aria-controls="class-{{class.name}}"
-      aria-selected="true">Class {{class.name}}</a>
-  </li>
-
-</ul>
-{% endfor %}
-<div class="tab-content" id="myTabContent">
-{% for class in classes %}
-  <div class="tab-pane fade show active" id="class-{{class.name}}" role="tabpanel" aria-labelledby="class-{{class.name}}-tab">
- 
-
-
-
-  </div>
-{% endfor %}
-
-        </div>
       </div>
-    </div>
+    </nav>
+{% block content_list %}
+{% endblock content_list %}
 
- </div>
 {% include 'course_material_create_modal.html' %}
 {% endblock body %}

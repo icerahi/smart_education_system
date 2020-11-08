@@ -1,0 +1,59 @@
+{% extends 'course_material_list.html' %}
+
+{% block content_list %}
+
+    <div class="card-body">
+                  <h4 class="card-title">Class {{class_name}}</h4>
+                  <p class="card-description">
+                    Subjects : <code>{{subject}}</code>
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                          <th>
+                            Chapter No
+                          </th>
+                          <th>
+                            Title
+                          </th>
+                          <th>
+                            Content
+                          </th>
+                          <th>
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for object in object_list %}
+                        <tr>
+                          <td>
+                            {{object.chapter.name}}
+                          </td>
+                          <td>
+                            {{ object.title }}
+                          </td>
+                          <td>
+
+
+                           <a data-toggle="modal" data-target="#content{{object.id}}">Click to view</a>
+                            {% include 'content_show_modal.html' %}
+                          </td>
+                            <td>
+                           Edit
+
+                        </button>
+                           </td>
+
+                        </tr>
+                      {% empty %}
+                      <p>No Content yet !</p>
+                      {% endfor %}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+{% endblock content_list %}

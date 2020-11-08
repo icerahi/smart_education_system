@@ -48,6 +48,7 @@ class CourseMaterial(models.Model):
                                      show_all=False,auto_choose=True,sort=True)
     chapter  = ChainedForeignKey(Chapter,chained_field='subject',chained_model_field='subject',
                                      show_all=False,auto_choose=True,sort=True)
+    title   = models.TextField()
     content  = models.FileField(upload_to=content_file_name)
 
     created   = models.DateTimeField(auto_now_add=True)
@@ -67,3 +68,4 @@ class CourseMaterial(models.Model):
             )
         ]
         verbose_name_plural = "CourseMeterials"
+

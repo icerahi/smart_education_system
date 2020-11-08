@@ -61,9 +61,19 @@
 
                     </div>
 
-
+                      <hr>
                       <div class="row">
-<!--                          <p class="display4 text-dark"> School Information</p>-->
+
+
+                        <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Content Title</label>
+                          <div class="col-sm-9">
+                              <p class="text-danger">{{ form.title.errors }}</p>
+                            {{ form.title }}
+                          </div>
+                        </div>
+                      </div>
 
                      <div class="col-md-6">
                         <div class="form-group row">
