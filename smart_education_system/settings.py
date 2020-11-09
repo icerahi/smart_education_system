@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'import_export',
     'smart_selects',
     'django_cleanup',
+    'ckeditor',
 
 
     #own
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'apps.school',
     'apps.teacher',
     'apps.course_material',
+    'apps.notice',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,20 @@ STATIC_ROOT = BASE_DIR /'static-root'
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_CustomToolbarConfig': [
+            {'name': 'customtools', 'items':
+                ['Undo', 'Redo','-','Bold', 'Italic', 'Underline', 'TextColor', 'BGColor','Subscript',
+                 'Superscript', '-', 'RemoveFormat','NumberedList', 'BulletedList','-', 'Blockquote', '-',
+                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-','Image', 'Table',
+                 'HorizontalRule','Styles','Print','Maximize','Preview','Format','FontSize', 'Font',
+            ]},
+        ],
+        'toolbar': 'CustomToolbarConfig',
+        'tabSpaces': 4,
+    }
+}

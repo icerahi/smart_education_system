@@ -1,24 +1,22 @@
-{% extends 'course_material_list.html' %}
+{% extends 'base.html' %}
+{% block create %}
+<button  data-toggle="modal" data-target="#notice_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+{% endblock create %}
+{% block body %}
 
-{% block content_list %}
 <div class="card mt-3">
     <div class="card-body">
-                  <h4 class="card-title">Class {{class_name}}</h4>
-                  <p class="card-description">
-                    Subjects : <code>{{subject}}</code>
-                  </p>
+                  <h4 class="card-title">Notice Lists</h4>
+
                   <div class="table-responsive pt-3">
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>
-                            Chapter No
-                          </th>
-                          <th>
                             Title
                           </th>
                           <th>
-                            Content
+                            Status
                           </th>
                           <th>
                             Created
@@ -29,21 +27,14 @@
                       {% for object in object_list %}
                         <tr>
                           <td>
-                            {{object.chapter.name}}
+                            {{object.title}}
                           </td>
                           <td>
-                            {{ object.title }}
+                            {{ object.get_status_display }}
                           </td>
-                          <td>
 
-
-                           <a data-toggle="modal" data-target="#content{{object.id}}">Click to view</a>
-                            {% include 'content_show_modal.html' %}
-                          </td>
                             <td>
                                  {{object.created}}
-
-
                            </td>
 
                         </tr>
@@ -57,4 +48,6 @@
                   </div>
                 </div>
     </div>
-{% endblock content_list %}
+
+{% include 'notice_create_modal.html' %}
+{% endblock body %}
