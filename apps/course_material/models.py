@@ -3,6 +3,7 @@ import os
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse_lazy
 from smart_selects.db_fields import ChainedForeignKey
 
 
@@ -53,6 +54,12 @@ class CourseMaterial(models.Model):
 
     created   = models.DateTimeField(auto_now_add=True)
     updated   = models.DateTimeField(auto_now=True)
+
+    def get_edit_url(self):
+        return reverse_lazy('course_material:update_content',kwargs={'class_name':self.class_name.name,
+                                                                     'subject':self.subject.name,
+                                                                     'chapter':self.chapter.name,
+                                                                     'pk':self.pk})
 
      
 

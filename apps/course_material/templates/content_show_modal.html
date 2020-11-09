@@ -23,11 +23,10 @@
       <div class="modal-footer float-right flex-column flex-md-row">
         <span class="text-black">{{ object.title }}</span>
         <div>
-
-
         </div>
-        <button type="button" class="btn float-right btn-outline-primary btn-rounded btn-md ml-4"
-          data-dismiss="modal">Edit</button>
+
+        <a href="{{object.get_edit_url}}" class="btn float-right btn-outline-primary btn-rounded btn-md ml-4"
+          >Edit</a>
         <button type="button" class="btn float-right btn-outline-primary btn-rounded btn-md ml-4"
           data-dismiss="modal">Close</button>
 

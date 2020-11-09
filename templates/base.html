@@ -165,7 +165,7 @@
               <span class="menu-title">Node Info</span>
              </a>
           </li>
-          <li class="nav-item {% if url_name == 'course_material' %} active {% endif %}">
+          <li class="nav-item {% if url_name == 'course_material' or url_name == 'get_content' or url_name == 'update_content' %} active {% endif %}">
             <a class="nav-link" href="{% url 'course_material:course_material' %}">
               <i class="icon-folder menu-icon"></i>
               <span class="menu-title">Course Meterial</span>
@@ -284,6 +284,8 @@
 </script>
       {% endfor %}
     {% endif %}
+
+
  </body>
 
 </html>
