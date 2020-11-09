@@ -1,0 +1,40 @@
+
+
+<!--Modal: modalVM-->
+<div class="modal fade" id="content{{object.id}}" tabindex="-1" role="dialog" aria-labelledby="content{{object.id}}"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Body-->
+      <div class="modal-body mb-0 p-0">
+
+        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+              <video width='400' controls><source src="{{ object.content.url }}" type='video/mp4'>
+    Your browser does not support the video tag.
+    </video>
+        </div>
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer float-right flex-column flex-md-row">
+        <span class="text-black">{{ object.title }}</span>
+        <div>
+        </div>
+
+        <a href="{{object.get_edit_url}}" class="btn float-right btn-outline-primary btn-rounded btn-md ml-4"
+          >Edit</a>
+        <button type="button" class="btn float-right btn-outline-primary btn-rounded btn-md ml-4"
+          data-dismiss="modal">Close</button>
+
+      </div>
+
+    </div>
+    <!--/.Content-->
+
+  </div>
+</div>
+

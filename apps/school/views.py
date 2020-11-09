@@ -10,10 +10,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, FormView
 
 from apps.school.forms import SchoolCreateForm
 from apps.school.models import School
-
-
-def school(requests):
-    return render(requests,'school_list.html')
+ 
 
 
 
@@ -24,6 +21,8 @@ class SchoolCreateAndListView(SuccessMessageMixin,CreateView):
     success_url = reverse_lazy('school:school')
     success_message = "New school has been created!"
     template_name = 'school_list.html'
+    
+
 
     def get_context_data(self, **kwargs):
         context=super(SchoolCreateAndListView, self).get_context_data(*kwargs)

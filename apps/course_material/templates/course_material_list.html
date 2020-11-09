@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block create %}
+<button  data-toggle="modal" data-target="#course_material_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+{% endblock create %}
+{% block body %}
+
+    <nav class="navbar card col-lg-12 col-12 p-0 d-flex flex-row">
+
+      <div class="navbar-menu-wrapper card-body d-flex align-items-center justify-content-start">
+      {% for class in classes %}
+        <ul class="navbar-nav navbar-nav-left">
+          <li class="nav-item active dropdown d-flex ">
+            <a class="nav-link  count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="class{{class.id}}" href="#" data-toggle="dropdown">
+             Class {{class.name}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="class{{class.id}}">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Subjects</p>
+              {% for subject in class.subject_set.all %}
+              <a class="dropdown-item preview-item" href="{% url 'course_material:get_content' class_name=class.name subject=subject.name %}">
+                  {{subject.name}}
+              </a>
+              {% empty %}
+              <p>No Subjects yet!</p>
+              {% endfor %}
+            </div>
+          </li>
+        </ul>
+        {% empty %}
+        <p> No classes yet !</p>
+        {%  endfor %}
+
+
+      </div>
+    </nav>
+{% block content_list %}
+{% endblock content_list %}
+
+{% include 'course_material_create_modal.html' %}
+{% endblock body %}

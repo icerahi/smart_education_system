@@ -2,8 +2,7 @@ venv
 .idea
 *.sqlite3
 __pycache__
-<<<<<<< HEAD
-=======
+
 __pycache__
->>>>>>> master
+
 *.pyc

@@ -2,12 +2,13 @@
     <!--Modal: modalDiscount-->
     <div  data-backdrop="false" class="modal fade left" data-animation="slide-out-right" id="message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true" >
-      <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-success" role="document">
+      <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-{% if message.tags == 'error' %}danger{% else %}success{% endif %}" role="document">
         <!--Content-->
         <div class="modal-content">
+
           <!--Header-->
           <div class="modal-header">
-             <p class="text-dark display-6">{{message}}</p>
+             <p class="text-dark display-6">{{message|safe}}</p>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true" class="white-text">&times;</span>
             </button>
