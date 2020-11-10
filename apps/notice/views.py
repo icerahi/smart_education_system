@@ -43,3 +43,16 @@ class NoticeDetailAndUpdateView(SuccessMessageMixin,UpdateView):
         object  = self.get_object()
         context['object'] = object
         return context
+
+def notice_status(request,pk,status):
+    notice = Notice.objects.get(pk=pk)
+    if status == 'published':
+        notice.status='published'
+        notice.save()
+        messages.success(request,'<strong>Notice has been published successfully!</strong>')
+        return redirect('notice:notice_detail',pk=pk)
+    if status == 'archived':
+        notice.status = 'archived'
+        notice.save()
+        messages.success(request, '<strong>Notice has been move to archived successfully!</strong>')
+        return redirect('notice:notice_detail',pk=pk)

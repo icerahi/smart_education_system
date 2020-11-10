@@ -4,22 +4,22 @@
 {% endblock create %}
 {% block body %}
 
-<div class="card mt-3">
+<div class="card">
     <div class="card-body">
-                  <h4 class="card-title">Notice Lists</h4>
+                  <h4 class="card-title text-center">Notice Lists</h4>
 
                   <div class="table-responsive pt-3">
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>
-                            Title
+                              Title
                           </th>
                           <th>
                             Status
                           </th>
                           <th>
-                            Created
+                            Updated
                           </th>
                         </tr>
                       </thead>
@@ -27,7 +27,9 @@
                       {% for object in object_list %}
                         <tr>
                           <td>
-                            {{object.title}}
+                     <a href="{% url 'notice:notice_detail' pk=object.pk %}"><mark>{{object.title}}</mark></a>
+
+
                           </td>
                           <td>
                             {{ object.get_status_display }}

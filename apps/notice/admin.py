@@ -6,4 +6,5 @@ from apps.notice.models import Notice
 
 @admin.register(Notice)
 class NoticeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title','status','updated')
+    list_filter = ('status',)

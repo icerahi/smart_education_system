@@ -35,7 +35,7 @@ class TeacherDetailAndUpdateView(SuccessMessageMixin,UpdateView):
     success_message = "'%(name)s' has been updated!"
 
     def get_success_url(self):
-        self.success_url = HttpResponseRedirect("")
+        return self.request.POST['previous']
 
 #passing details of a object with context
     def get_context_data(self, **kwargs):

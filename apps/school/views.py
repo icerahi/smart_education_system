@@ -38,7 +38,7 @@ class SchoolDetailAndUpdateView(SuccessMessageMixin,UpdateView):
 
 #redirect same page after update
     def get_success_url(self):
-        self.success_url = HttpResponseRedirect("")
+        return self.request.POST['previous']
 
 
 #getting current object data
