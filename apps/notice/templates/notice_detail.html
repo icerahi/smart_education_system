@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="card mt-3">
+                      <h4 class="card-title text-center p-1">Notice Details</h4>
+
+            <div class="row">
+            <div class="col-md-6">
+             <p class="display-7 ml-1">  Title :- <span class="mt-0 font-weight-bold blue-text display-5">  <mark>{{object.title}}</mark></span></p>
+            </div>
+             <div class="col-md-6">
+                  <button type="submit" data-toggle="modal" data-target="#notice_update_modal"  class="btn btn-rounded btn-sm float-right btn-danger btn-icon-text">
+                          Edit  <i class="icon-square-check"></i>
+                   </button>
+
+                  <form action=""  >
+                  <button type="submit" class="btn btn-sm float-right btn-light btn-icon-text" disabled>
+                          Draft
+                          <i class="icon-paper-stack"></i>
+                        </button>
+                  </form>
+
+                  <form action="{% url 'notice:notice_status' pk=object.pk status='published' %}"  >
+                    <button type="submit" class="btn btn-sm float-right btn-light btn-icon-text" {% if object.published is True %}disabled{% endif %}>
+                        Publish
+                          <i class="icon-check"></i>
+                        </button>
+                      </form>
+
+                  <form action="{% url 'notice:notice_status' pk=object.pk status='archived' %}"  >
+                    <button type="submit" class="btn btn-sm float-right btn-light btn-icon-text" {% if object.archived is True or object.published is False %}disabled{% endif %}>
+                          Archived
+                          <i class="icon-archive"></i>
+                        </button>
+                    </form>
+
+
+            </div>
+
+        </div>
+    <hr>
+    <div class="card-body">
+        <div class="media-body text-left text-md-left ml-md-3 ml-0">
+            <p class="display-7"> <span class="mt-0 font-weight-bold blue-text display-5"><mark>{{object.body|safe}}</mark></span></p>
+      </div>
+
+
+
+                </div>
+    </div>
+
+{% include 'notice_update_modal.html' %}
+{% endblock body %}
