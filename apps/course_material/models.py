@@ -68,6 +68,7 @@ class CourseMaterial(models.Model):
 
     class Meta:
         #class_name,subject,chapter can't be multiple,all least one field below need to be non same.
+        ordering=['-created']
         constraints =[
             models.UniqueConstraint(
                 fields=['class_name','subject','chapter'],
