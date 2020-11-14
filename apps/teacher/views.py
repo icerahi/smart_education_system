@@ -10,9 +10,6 @@ from apps.teacher.forms import TeacherForm
 from apps.teacher.models import Teacher
 
 
-class IndexView(TemplateView):
-    template_name = 'teacher_list.html'
-
 
 class TeacherCreateAndListView(SuccessMessageMixin,CreateView):
     model = Teacher

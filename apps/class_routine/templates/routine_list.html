@@ -1,27 +1,27 @@
-{% extends 'course_material_base.html' %}
+{% extends 'routine_base.html' %}
 
-{% block content_list %}
-<div class="card mt-3">
+
+{% block routine_list %}
+
+<div class="card mt-5">
     <div class="card-body">
-                  <h4 class="card-title">Class {{class_name}}</h4>
-                  <p class="card-description">
-                    Subjects : <code>{{subject}}</code>
-                  </p>
+                  <h4 class="card-title">Class : {{class_name}}</h4>
+
                   <div class="table-responsive pt-3">
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>
-                            Chapter No
+                            Day
                           </th>
                           <th>
-                            Title
+                            Subject
                           </th>
                           <th>
-                            Content
+                            Start Time
                           </th>
                           <th>
-                            Created
+                            End Time
                           </th>
                         </tr>
                       </thead>
@@ -29,26 +29,25 @@
                       {% for object in object_list %}
                         <tr>
                           <td>
-                            {{object.chapter.name}}
+                            {{object.day.name}}
                           </td>
                           <td>
-                            {{ object.title }}
+                            {{ object.subject.name }}
                           </td>
                           <td>
 
 
-                           <a data-toggle="modal" data-target="#content{{object.id}}">Click to view</a>
-                            {% include 'content_show_modal.html' %}
+                          {{ object.start_time }}
                           </td>
                             <td>
-                                 {{object.created}}
+                                 {{object.end_time}}
 
 
                            </td>
 
                         </tr>
                       {% empty %}
-                      <p>No Content yet !</p>
+                      <p>No routine yet !</p>
                       {% endfor %}
 
 
@@ -57,4 +56,4 @@
                   </div>
                 </div>
     </div>
-{% endblock content_list %}
+{% endblock routine_list %}

@@ -193,8 +193,8 @@
               <span class="menu-title">Teachers</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {% if url_name == 'routine'%} active {% endif %}">
+            <a class="nav-link" href="{% url 'class_routine:routine' %}">
               <i class="icon-paper-stack menu-icon"></i>
               <span class="menu-title">Class Routine</span>
             </a>
