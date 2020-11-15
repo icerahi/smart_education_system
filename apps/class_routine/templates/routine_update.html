@@ -1,13 +1,29 @@
-{% extends 'course_material_base.html' %}
+{% extends 'routine_base.html' %}
 
-{% block content_list %}
-      <div class="card mt-3">
-        <div class="col-12 card-body ">
 
-            <p class="display3 text-dark"> Update Content Information</p>
-            <hr>
+{% block routine_list %}
+
+<div class="card mt-5">
+    <div class="card-body">
+
+
+
+
+<!-- Central Modal Small -->
+
+            <p class="display4 text-center text-dark"> Update Routine</p>
+
+
+    <div class="">
+
+
+      <div class="modal-body">
+        <div class="col-12 grid-margin">
+
+
+            <p class="display4 text-dark"> Schedule Information</p>
                   <form class="form-sample" action="" method="POST" enctype="multipart/form-data">
-                   <p class="text-danger"> {{ form.non_field_errors.as_text}}</p>
+                    <p class="text-danger"> {{ form.non_field_errors.as_text}}</p>
 
                     {% csrf_token %}
                      {{ form.media.js }}
@@ -16,7 +32,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Class</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.class_name.errors }}</p>
+                             <p class="text-danger">{{ form.class_name.errors.as_text }}</p>
                            {{ form.class_name }}
 
                           </div>
@@ -26,7 +42,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Subject</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.subject.errors }}</p>
+                              <p class="text-danger">{{ form.subject.errors.as_text }}</p>
                            {{ form.subject }}
                           </div>
                         </div>
@@ -35,10 +51,10 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Chapter</label>
+                          <label class="col-sm-3 col-form-label">Day</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.chapter.errors }}</p>
-                            {{ form.chapter }}
+                               <p class="text-danger">{{ form.day.errors.as_text }}</p>
+                            {{ form.day }}
                           </div>
                         </div>
                       </div>
@@ -53,42 +69,43 @@
 
                         <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Content Title</label>
+                          <label class="col-sm-3 col-form-label">Start Time</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.title.errors }}</p>
-                            {{ form.title }}
+                              <small>{{ object.start_time|time:"H:i A"  }}</small>
+                           <p class="text-danger">{{ form.start_time.errors.as_text }}</p>
+                            {{ form.start_time }}
                           </div>
                         </div>
                       </div>
 
                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Content</label>
+                          <label class="col-sm-3 col-form-label">End Time</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.content.errors }}</p>
-                            {{ form.content }}
+                               <small>{{ object.end_time|time:"H:i A"  }}</small>
+                               <p class="text-danger">{{ form.end_time.errors.as_text }}</p>
+                              {{ form.end_time }}
                           </div>
                         </div>
                       </div>
                     </div>
-
-
-
+            </div>
       <div class="modal-footer">
           <a class="btn btn-outline-secondary" href="javascript:window.history.back()">Cancel</a>
-         <button type="reset" class="btn btn-outline-warning btn-icon-text">
+        <button type="reset" class="btn btn-outline-warning btn-icon-text">
           <i class="mdi mdi-reload btn-icon-prepend"></i>Reset</button>
+
         <button type="submit" class="btn btn-outline-success btn-icon-text">
                           <i class="mdi mdi-file-check btn-icon-prepend"></i>
-                          save
+                          Create
                         </button>
       </div>
 
                   </form>
 
-    </div>
-  </div>
+
 
 <!-- Central Modal Small -->
-    {% endblock content_list %}
-
+                </div>
+    </div>
+{% endblock routine_list %}

@@ -25,6 +25,7 @@ urlpatterns = [
     path('teacher/',include(('apps.teacher.urls','teacher'),namespace='teacher')),
     path('course_material/',include(('apps.course_material.urls','course_material'),namespace='course_material')),
     path('notice/',include(('apps.notice.urls','notice'),namespace='notice')),
+    path('class_routine/',include(('apps.class_routine.urls','class_routine'),namespace='class_routine')),
     #thirdparty
     path('chaining/', include('smart_selects.urls')),
 
