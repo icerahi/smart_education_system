@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block create %}
+<button  data-toggle="modal" data-target="#routine_create_modal" type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+{% endblock create %}
+{% block body %}
+
+    <nav class="navbar card col-lg-12 col-12 p-0 d-flex flex-row">
+
+      <div class="navbar-menu-wrapper card-body bg-light d-flex align-items-start justify-content-center">
+
+      {% for class in classes %}
+     <div class="row">
+
+             <div class="col-md-12 col-sm-12">
+
+                  <a href="{% url 'class_routine:get_routine' class_name=class.name %}" class="btn  btn-light float-left">
+                          {{class.name}}
+                        </a>
+
+            </div>
+
+        </div>
+        {% empty %}
+        <p> No classes yet !</p>
+        {%  endfor %}
+
+
+      </div>
+    </nav>
+
+{% block routine_list %}
+
+{% endblock routine_list %}
+
+{% include 'routine_create_modal.html' %}
+{% endblock body %}
+
+

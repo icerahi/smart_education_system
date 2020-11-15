@@ -14,9 +14,9 @@ from apps.course_material.models import CourseMaterial, Class
 class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
     model = CourseMaterial
     form_class = CourseMaterialForm
-    template_name = 'course_material_list.html'
+    template_name = 'course_material_base.html'
     success_url = reverse_lazy('course_material:course_material')
-    success_message = "<strong>Material Created Successfully!</strong>"
+    success_message = "<strong>Content Created Successfully!</strong>"
     error_message = """<strong>Error creating New Course Material!</strong> \n Check the Create Form"""
 
     def form_valid(self, form):
@@ -37,7 +37,7 @@ class CourseMaterialCreateAndListView(SuccessMessageMixin,CreateView):
 class GetContentView(SuccessMessageMixin,CreateView):
     model = CourseMaterial
     form_class = CourseMaterialForm
-    success_message = 'Content created successfully!'
+    success_message = "<strong>Content Created Successfully!</strong>"
     template_name = 'content_list.html'
     error_message = """<strong>Error creating New Course Material!</strong> \n Check the Create Form"""
 
