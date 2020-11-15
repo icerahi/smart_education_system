@@ -165,7 +165,12 @@
               <span class="menu-title">Node Info</span>
              </a>
           </li>
-
+          <li class="nav-item {% if url_name == 'routine' or url_name == 'get_routine' or url_name == 'update_routine' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'class_routine:routine' %}">
+              <i class="icon-paper-stack menu-icon"></i>
+              <span class="menu-title">Class Routine</span>
+            </a>
+          </li>
           <li class="nav-item {% if url_name == 'notice' or url_name == 'notice_detail'  %} active {% endif %}">
             <a class="nav-link" href="{% url 'notice:notice' %}">
               <i class="icon-align-left menu-icon"></i>
@@ -193,12 +198,7 @@
               <span class="menu-title">Teachers</span>
             </a>
           </li>
-          <li class="nav-item {% if url_name == 'routine'%} active {% endif %}">
-            <a class="nav-link" href="{% url 'class_routine:routine' %}">
-              <i class="icon-paper-stack menu-icon"></i>
-              <span class="menu-title">Class Routine</span>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link">
               <i class="icon-camera menu-icon"></i>

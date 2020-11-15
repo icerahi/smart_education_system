@@ -12,6 +12,8 @@ class Day(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Routine(models.Model):
     class_name = models.ForeignKey(Class,on_delete=models.CASCADE)
     subject    = ChainedForeignKey(Subject,chained_field='class_name',chained_model_field='class_name',
@@ -29,7 +31,7 @@ class Routine(models.Model):
         return self.class_name.name
 
     class Meta:
-        ordering =['-created']
+        ordering =['start_time']
 
         constraints = [
             models.UniqueConstraint(

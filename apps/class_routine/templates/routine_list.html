@@ -9,49 +9,38 @@
 
                   <div class="table-responsive pt-3">
                     <table class="table table-striped">
+                          {% for day in days %}
                       <thead>
                         <tr>
                           <th>
-                            Day
-                          </th>
-                          <th>
-                            Subject
-                          </th>
-                          <th>
-                            Start Time
-                          </th>
-                          <th>
-                            End Time
+                                {{ day }}
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                      {% for object in object_list %}
                         <tr>
+                            {% for object in day.routine_set.all %}
+<!--                            filtering by class name from all routines-->
+                             {% if class_name == object.class_name.name %}
                           <td>
-                            {{object.day.name}}
+                             {{object.subject.name}}
+                            <a href="{% url 'class_routine:update_routine' class_name=class_name pk=object.pk %}">
+                                 <i class="icon-square-check bg-danger"></i><small>Edit</small> </a> <br>
+
+                              <small>({{object.start_time|time:"H:i A"}} - {{ object.end_time|time:"H:i A"}})</small>
+
                           </td>
-                          <td>
-                            {{ object.subject.name }}
-                          </td>
-                          <td>
 
-
-                          {{ object.start_time }}
-                          </td>
-                            <td>
-                                 {{object.end_time}}
-
-
-                           </td>
-
+                              {% endif %}
+                            {% endfor %}
                         </tr>
-                      {% empty %}
+                         {% empty %}
                       <p>No routine yet !</p>
-                      {% endfor %}
+
 
 
                       </tbody>
+                            {% endfor %}
                     </table>
                   </div>
                 </div>
