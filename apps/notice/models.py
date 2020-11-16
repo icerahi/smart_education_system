@@ -7,6 +7,7 @@ from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
 
+
 class Notice(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -22,6 +23,8 @@ class Notice(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+
 
     class Meta:
         ordering=["-updated"]

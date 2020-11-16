@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db.models import Q
+
 from smart_selects.db_fields import ChainedForeignKey
 
 from apps.course_material.models import Class, Subject
@@ -26,6 +27,8 @@ class Routine(models.Model):
 
     created     = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
+
+
 
     def __str__(self):
         return self.class_name.name
