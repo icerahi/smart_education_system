@@ -5,10 +5,9 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.urls import reverse_lazy
 from django.utils.text import slugify
-from smart_selects.db_fields import ChainedForeignKey
-
 from apps.school.models import School
-from autoslug import AutoSlugField
+
+
 
 
 class Teacher(models.Model):
@@ -21,6 +20,7 @@ class Teacher(models.Model):
     slug        =models.SlugField()
     created     = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return self.name
 

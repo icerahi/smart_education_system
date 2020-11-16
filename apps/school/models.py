@@ -5,6 +5,7 @@ from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.urls import reverse_lazy, reverse
 from django.utils.text import slugify
+
 from smart_selects.db_fields import ChainedForeignKey
 
 
@@ -76,6 +77,8 @@ class School(models.Model):
    #image       = models.ImageField(upload_to='school',default)
     created     =models.DateTimeField(auto_now_add=True)
     updated     =models.DateTimeField(auto_now=True)
+
+
 
     def __str__(self):
         return str(self.school_id)

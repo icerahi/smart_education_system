@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor',
 
 
+
     #own
     'apps.dashboard',
     'apps.school',
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'smart_education_system.urls'

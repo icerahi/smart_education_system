@@ -8,10 +8,9 @@ from apps.class_routine.models import Routine, Day
 class DayAdmin(admin.ModelAdmin):
     pass
 
-
 @admin.register(Routine)
 class RoutineAdmin(admin.ModelAdmin):
     list_display = ('class_name','subject','day','start_time','end_time')
-    list_filter = ('start_time',)
+    list_filter = ('start_time','class_name')
 
 
