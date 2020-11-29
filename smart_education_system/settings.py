@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apps.course_material',
     'apps.notice',
     'apps.class_routine',
+    'apps.node',
 ]
 
 MIDDLEWARE = [
@@ -95,7 +96,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+
 }
 
 
