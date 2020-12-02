@@ -33,17 +33,26 @@
                       </div>
                     </div>
                     <div class="row">
+
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Chapter</label>
+                          <label class="col-sm-3 col-form-label">Unit</label>
                           <div class="col-sm-9">
-                              <p class="text-danger">{{ form.chapter.errors }}</p>
-                            {{ form.chapter }}
+                              <p class="text-danger">{{ form.unit.errors }}</p>
+                            {{ form.unit }}
                           </div>
                         </div>
                       </div>
 
-
+                  <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Unit Title</label>
+                          <div class="col-sm-9">
+                              <p class="text-danger">{{ form.unit_name.errors }}</p>
+                            {{ form.unit_name }}
+                          </div>
+                        </div>
+                      </div>
 
                     </div>
 
@@ -51,15 +60,6 @@
                       <div class="row">
 
 
-                        <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Content Title</label>
-                          <div class="col-sm-9">
-                              <p class="text-danger">{{ form.title.errors }}</p>
-                            {{ form.title }}
-                          </div>
-                        </div>
-                      </div>
 
                      <div class="col-md-6">
                         <div class="form-group row">

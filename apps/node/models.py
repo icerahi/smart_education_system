@@ -5,7 +5,10 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
+from apps.course_material.models import Class
 from apps.school.models import School
+
+
 
 
 class Node(models.Model):
@@ -15,12 +18,12 @@ class Node(models.Model):
 
     )
     node_id     = models.AutoField(primary_key=True)
-    ip_address  = models.GenericIPAddressField()
+    ip_address  = models.GenericIPAddressField(unique=True)
     port        = models.IntegerField(null=True,blank=True)
-    mac_address = models.CharField(max_length=50,null=True,blank=True)
+    mac_address = models.CharField(max_length=50,null=True,blank=True,unique=True)
     school_id     = models.ForeignKey(School,on_delete=models.CASCADE)
     school_name = models.CharField(max_length=100)
-    class_name  = models.CharField(max_length=15,unique=True)
+    class_name  = models.ForeignKey(Class,on_delete=models.DO_NOTHING)
     slug        = models.SlugField()
     status      = models.CharField(max_length=15,choices=STATUS_CHOICES,default='disable')
 

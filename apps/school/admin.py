@@ -49,7 +49,7 @@ class DivisionAdmin(ImportExportModelAdmin):
 
 
 @admin.register(School)
-class SchoolAdmin(admin.ModelAdmin):
+class SchoolAdmin(ImportExportModelAdmin):
     prepopulated_fields = {'slug': ('name',),}
     search_fields = ['name']
 

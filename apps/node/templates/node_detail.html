@@ -4,10 +4,10 @@
 
 
 <div class="card mt-3">
-                      <h4 class="card-title text-center p-1">School Details</h4>
+                      <h4 class="card-title text-center p-1">Node Details</h4>
 
     <div class="card-body">
-           <button type="submit" data-toggle="modal" data-target="#school_update_modal"  class="btn btn-rounded btn-sm float-right btn-danger btn-icon-text">
+           <button type="submit" data-toggle="modal" data-target="#node_update_modal"  class="btn btn-rounded btn-sm float-right btn-danger btn-icon-text">
                           Edit  <i class="icon-square-check"></i>
                    </button>
 
@@ -22,11 +22,11 @@
       <div class="media-body text-center text-md-left ml-md-3 ml-0">
        <p class="display-7">School Name : <span class="mt-0 font-weight-bold blue-text display-5"><mark>{{ object.name }}</mark></span></p>
 
-                 <p class="display-7"> School ID : <span class="text-dark display-4">  {{ object.school_id }}</span></p>
-                 <p class="display-7"> Village : <span class="text-dark d4"> {{ object.village }}</span></p>
-                <p class="display-7"> Union : <span class="text-dark d4">   {{ object.union }}</span></p>
-                <p class="display-7"> Upazila : <span class="text-dark d4">  {{ object.upazila }}</span></p>
-                <p class="display-7"> District : <span class="text-dark d4"> {{ object.district }}</span></p>
+                 <p class="display-7"> Node ID : <span class="text-dark display-4">  {{ object.node_id }}</span></p>
+                 <p class="display-7"> Ip Address : <span class="text-dark d4"> {{ object.ip_address }}</span></p>
+                <p class="display-7"> Port : <span class="text-dark d4">   {{ object.port }}</span></p>
+                <p class="display-7"> Mac Address : <span class="text-dark d4">  {{ object.mac_address }}</span></p>
+                <p class="display-7"> School : <span class="text-dark d4"> {{ object.district }}</span></p>
                 <p class="display-7"> Division : <span class="text-dark d4"> {{ object.division }}</span></p>
                 <p class="display-7"> Created : <span class="text-dark d4">  {{ object.created }}</span></p>
 
@@ -45,7 +45,7 @@
 </div>
 
 
-{% include 'school_update_modal.html' %}
+{% include 'node_update_modal.html' %}
 
 
 {% endblock %}

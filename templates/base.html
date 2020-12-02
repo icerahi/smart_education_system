@@ -159,8 +159,8 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">
+          <li class="nav-item {% if url_name == 'node' or url_name == 'node_detail' %}active {% endif %}">
+            <a class="nav-link" href="{% url 'node:node' %}">
               <i class="icon-monitor menu-icon"></i>
               <span class="menu-title">Node Info</span>
              </a>

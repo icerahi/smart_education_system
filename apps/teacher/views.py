@@ -1,11 +1,12 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 
+from apps.school.models import School
 from apps.teacher.forms import TeacherForm
 from apps.teacher.models import Teacher
 
@@ -22,6 +23,13 @@ class TeacherCreateAndListView(SuccessMessageMixin,CreateView):
         context=super(TeacherCreateAndListView, self).get_context_data(*kwargs)
         context['object_list'] = Teacher.objects.all()
         return context
+
+#PASSING kwargs from form
+    # def get_form_kwargs(self,*args,**kwargs):
+    #     kwargs=super(TeacherCreateAndListView, self).get_form_kwargs(*args,**kwargs)
+    #     kwargs['school_set']=School.objects.all()
+    #     return kwargs
+
 
 
 
@@ -40,3 +48,4 @@ class TeacherDetailAndUpdateView(SuccessMessageMixin,UpdateView):
         object = self.get_object()
         context['object'] = object
         return context
+
