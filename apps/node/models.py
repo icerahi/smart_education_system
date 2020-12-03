@@ -1,7 +1,9 @@
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.db import models
 
 # Create your models here.
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
@@ -42,3 +44,5 @@ class Node(models.Model):
 def pre_save_slug_and_school_name(sender,instance,**kwargs):
     instance.school_name = instance.school_id.name
     instance.slug  = slugify(instance.school_name+f'-{instance.class_name}')
+
+# status signal send to channel
