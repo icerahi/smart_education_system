@@ -49,3 +49,4 @@ class TeacherDetailAndUpdateView(SuccessMessageMixin,UpdateView):
         context['object'] = object
         return context
 
+

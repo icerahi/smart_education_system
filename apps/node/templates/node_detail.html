@@ -20,15 +20,21 @@
     <div class="media d-block d-md-flex">
 
       <div class="media-body text-center text-md-left ml-md-3 ml-0">
-       <p class="display-7">School Name : <span class="mt-0 font-weight-bold blue-text display-5"><mark>{{ object.name }}</mark></span></p>
 
-                 <p class="display-7"> Node ID : <span class="text-dark display-4">  {{ object.node_id }}</span></p>
-                 <p class="display-7"> Ip Address : <span class="text-dark d4"> {{ object.ip_address }}</span></p>
-                <p class="display-7"> Port : <span class="text-dark d4">   {{ object.port }}</span></p>
-                <p class="display-7"> Mac Address : <span class="text-dark d4">  {{ object.mac_address }}</span></p>
-                <p class="display-7"> School : <span class="text-dark d4"> {{ object.district }}</span></p>
-                <p class="display-7"> Division : <span class="text-dark d4"> {{ object.division }}</span></p>
-                <p class="display-7"> Created : <span class="text-dark d4">  {{ object.created }}</span></p>
+                 <p class="display-7 text-dark font-weight-bold"> Node ID  :  <span class="lead ">  {{ object.node_id }}</span></p>
+                 <p class="display-7 font-weight-bold"> Ip Address : <span class="lead "> <mark>{{ object.ip_address }}</mark></span></p>
+                <p class="display-7 font-weight-bold"> Port : <span class="lead">   {{ object.port }}</span></p>
+                <p class="display-7 font-weight-bold"> Mac Address : <span class="lead">  {{ object.mac_address }}</span></p>
+          <hr>
+              <p class="display-7 font-weight-bold"> Class : <span class="lead"> {{ object.class_name }} </span> </p>
+                <p class="display-7 font-weight-bold"> School Name : <span class="lead"> {{ object.school_name }} </span> </p>
+             <p class="display-7 font-weight-bold"> School Id : <span class="lead"> {{ object.school_id }} </span> </p>
+
+          <p class="display-7 font-weight-bold"> Division :  <span class="lead">  {{ object.school_id.division.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> District  :  <span class="lead">  {{ object.school_id.district.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Upazila  :  <span class="lead">  {{ object.school_id.upazila.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Union  :  <span class="lead">  {{ object.school_id.union.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Village  : <span class="lead">  {{ object.school_id.village }} </span> </p>
 
       </div>
     </div>
