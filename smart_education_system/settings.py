@@ -32,19 +32,19 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # thirdparty
+    'channels',
+    'import_export',
+    'smart_selects',
+    'django_cleanup',
+    'ckeditor',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #thirdparty
-    'import_export',
-    'smart_selects',
-    'django_cleanup',
-    'ckeditor',
-
-
 
     #own
     'apps.dashboard',
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'apps.notice',
     'apps.class_routine',
     'apps.node',
+    'apps.node_activity',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +87,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smart_education_system.wsgi.application'
-
+ASGI_APPLICATION = 'smart_education_system.routing.application'
 
 
 # Database
@@ -164,4 +165,15 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'CustomToolbarConfig',
         'tabSpaces': 4,
     }
+}
+
+#redis channel layer
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+
+    },
 }
