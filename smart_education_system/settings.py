@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'apps.notice',
     'apps.class_routine',
     'apps.node',
-    'apps.node_activity',
+    'apps.node_activity', #modified it's __init__ and app file to work signals
 ]
 
 MIDDLEWARE = [

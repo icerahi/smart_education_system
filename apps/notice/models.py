@@ -42,3 +42,4 @@ def pre_save_status(sender,instance,**kwargs):
     if instance.status == 'archived':
         instance.archived = True
 
+
