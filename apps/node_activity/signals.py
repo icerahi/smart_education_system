@@ -19,7 +19,7 @@ def disable_node(sender,instance,**kwargs):
     if instance.status=='disable':
         try:
             active_node=ActiveNode.objects.get(node=instance.node_id)
-            async_to_sync(channel_layer.group_send)(active_node.single_group,{'type':'discard_single_node','action':'disconnect'})
+            async_to_sync(channel_layer.group_send)(active_node.single_group,{'type':'disable_single_node','data':json.dumps({'action':'disable'})})
         except:
             pass
 
@@ -31,6 +31,6 @@ def send_notice(sender,instance,**kwargs):
     if instance.status=='published':
         async_to_sync(channel_layer.group_send)('public',{
             'type':'send_notice',
-            'notice':json.dumps({'title':instance.title,'body':instance.body}),
+            'data':json.dumps({'notice':{'title':instance.title,'body':instance.body}}),
         })
 

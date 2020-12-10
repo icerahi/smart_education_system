@@ -40,11 +40,11 @@ class NodeConsumer(AsyncWebsocketConsumer):
                 #get node data from Node data by filtering it's ip address
                 #we create 'get_class_name' function cz in await sync_to_async query for foreignkey not working.
                 self.class_name =await  sync_to_async(get_class_name)(self.node)
-                self.node_data = json.dumps({'node_id':self.node.node_id,
+                self.node_data = json.dumps({'node_data':{'node_id':self.node.node_id,
                                              'ip_address':self.node.ip_address,
                                              'school_name':self.node.school_name,
                                              'class_name':self.class_name,
-                                             })
+                                             }})
 
                 #add connected Node to ActiveModel
                 await sync_to_async(ActiveNode.objects.create)(node=self.node,group_name=self.group_name,
@@ -53,7 +53,7 @@ class NodeConsumer(AsyncWebsocketConsumer):
                 #send node data to specafic node by one to one communication
                 await self.channel_layer.group_send(self.single_group,{
                     'type':'send_node_data',
-                    'node_data':self.node_data,
+                    'data':self.node_data,
                 })
         except :
             raise  DenyConnection("Invalid Authentication")
@@ -79,17 +79,15 @@ class NodeConsumer(AsyncWebsocketConsumer):
         print("###",text_data)
 
 
-    async def discard_single_node(self,event):
-        if 'disconnect' in event['action']:
+    async def disable_single_node(self,event):
+        data = json.loads(event['data'])
+        if 'action' in data and data['action'] == 'disable':
             return await self.close()
 
     async def send_node_data(self,event):
-        await self.send(event['node_data'])
-
-
-
-#need to make reusable code
-class NoticeConsumer(NodeConsumer):
+        await self.send(event['data'])
 
     async def send_notice(self,event):
-        await self.send(event['notice'])
+        await self.send(event['data'])
+
+
