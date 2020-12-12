@@ -5,6 +5,7 @@ from channels.layers import get_channel_layer
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from apps.course_material.models import CourseMaterial
 from apps.node.models import Node
 from apps.node_activity.models import ActiveNode
 
@@ -34,3 +35,7 @@ def send_notice(sender,instance,**kwargs):
             'data':json.dumps({'notice':{'title':instance.title,'body':instance.body}}),
         })
 
+@receiver(post_save,sender=CourseMaterial)
+def send_course_material(sender,instance,created,**kwargs):
+    if created:
+        pass
