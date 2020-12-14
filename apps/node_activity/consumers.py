@@ -18,6 +18,9 @@ def delete_node(channel_name):
 def get_class_name(node):
      return node.class_name.name
 
+def get_school_name(node):
+    return node.school_id.name
+
 class NodeConsumer(AsyncWebsocketConsumer):
     group_name= "public"
 
@@ -32,30 +35,40 @@ class NodeConsumer(AsyncWebsocketConsumer):
             # if node id exists then accept connection & add it into group
             if (self.node and self.node.status=='enable'):# checking is node exists and status enable
                 await self.accept()
-                await self.channel_layer.group_add(self.group_name, self.channel_name)
+
+                self.class_name = await  sync_to_async(get_class_name)(self.node)
+                self.class_group = f'class_group_{self.class_name}'
 
                 self.single_group = f'node_{self.node.node_id}' #single group
+                self.school_name = await  sync_to_async(get_school_name)(self.node)
+
                 await self.channel_layer.group_add(self.single_group,self.channel_name)
+                await self.channel_layer.group_add(self.group_name, self.channel_name)
+                await self.channel_layer.group_add(self.class_group, self.channel_name)
+
+
 
                 #get node data from Node data by filtering it's ip address
                 #we create 'get_class_name' function cz in await sync_to_async query for foreignkey not working.
-                self.class_name =await  sync_to_async(get_class_name)(self.node)
+
+
                 self.node_data = json.dumps({'node_data':{'node_id':self.node.node_id,
                                              'ip_address':self.node.ip_address,
-                                             'school_name':self.node.school_name,
+                                             'school_name':self.school_name,
                                              'class_name':self.class_name,
                                              }})
 
                 #add connected Node to ActiveModel
                 await sync_to_async(ActiveNode.objects.create)(node=self.node,group_name=self.group_name,
-                                          single_group=self.single_group,channel_name=self.channel_name)
+                                          single_group=self.single_group,channel_name=self.channel_name,
+                                                               class_group=self.class_group)
 
                 #send node data to specafic node by one to one communication
                 await self.channel_layer.group_send(self.single_group,{
                     'type':'send_node_data',
                     'data':self.node_data,
                 })
-        except :
+        except ObjectDoesNotExist:
             raise  DenyConnection("Invalid Authentication")
             await self.close()
 
@@ -88,6 +101,9 @@ class NodeConsumer(AsyncWebsocketConsumer):
         await self.send(event['data'])
 
     async def send_notice(self,event):
+        await self.send(event['data'])
+
+    async  def send_course_material(self,event):
         await self.send(event['data'])
 
 
