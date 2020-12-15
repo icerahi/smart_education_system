@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'smart_selects',
     'django_cleanup',
     'ckeditor',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 
     #own
     'apps.dashboard',

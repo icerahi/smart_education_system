@@ -2,8 +2,10 @@ import json
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.http import request
 
 from apps.course_material.models import CourseMaterial
 from apps.node.models import Node
@@ -27,6 +29,7 @@ def disable_node(sender,instance,**kwargs):
 
 @receiver(post_save,sender=CourseMaterial)
 def send_course_material(sender,instance,created,**kwargs):
+
     async_to_sync(channel_layer.group_send)(f'class_group_{instance.class_name.name}',
                                                 {
                                                     'type':'send_course_material',
