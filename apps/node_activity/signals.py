@@ -33,13 +33,11 @@ def send_course_material(sender,instance,created,**kwargs):
     async_to_sync(channel_layer.group_send)(f'class_group_{instance.class_name.name}',
                                                 {
                                                     'type':'send_course_material',
-                                                    'data':json.dumps({'course_material':{
-                                                        'class_name':instance.class_name.name,
-                                                        'subject':instance.subject.name,
-                                                        'unit':instance.unit.name,
-                                                        'unit_name':instance.unit_name,
-                                                        'content':instance.content.url,
-                                                    }})
+                                                    'data':json.dumps({'course_material':{instance.subject.name:[[
+                                                        instance.unit.name,
+                                                        instance.unit_name,
+                                                        instance.content.url]
+                                                    ]}})
                                                 })
 
  

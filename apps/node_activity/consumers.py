@@ -5,7 +5,7 @@ from channels.exceptions import DenyConnection
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.core.exceptions import ObjectDoesNotExist
 
-
+from apps.course_material.models import CourseMaterial
 from apps.node.models import Node
 import json
 
@@ -20,6 +20,18 @@ def get_class_name(node):
 
 def get_school_name(node):
     return node.school_id.name
+
+def get_course_material(class_name):
+    course_material=CourseMaterial.objects.filter(class_name__name=class_name)
+    data = dict()
+    for subject in course_material:
+        data[subject.subject.name]=list()
+
+    for content in course_material:
+        data[content.subject.name].append([content.unit.name,content.unit_name,content.content.url])
+    return json.dumps({"course_material":data})
+
+
 
 class NodeConsumer(AsyncWebsocketConsumer):
     group_name= "public"
@@ -63,12 +75,22 @@ class NodeConsumer(AsyncWebsocketConsumer):
                                           single_group=self.single_group,channel_name=self.channel_name,
                                                                class_group=self.class_group)
 
+
+
                 #send node data to specafic node by one to one communication
                 await self.channel_layer.group_send(self.single_group,{
                     'type':'send_node_data',
                     'data':self.node_data,
                 })
-        except ObjectDoesNotExist:
+
+
+                self.course_material = await  sync_to_async(get_course_material)(self.class_name)
+                #send course material content to specific class group
+                await self.channel_layer.group_send(self.class_group,{
+                    'type':"send_course_material",
+                    'data': self.course_material ,
+                })
+        except:
             raise  DenyConnection("Invalid Authentication")
             await self.close()
 
