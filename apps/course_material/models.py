@@ -41,8 +41,8 @@ class Unit(models.Model):
 #FILE   STORING
 def content_file_name(instance,filename):
     ext = filename.split('.')[-1]
-    filename=f'unit_{instance.unit.name}.'+ext
-    return os.path.join(f'course_material/class_{instance.class_name.name}/{instance.subject.name}/unit_{instance.unit.name}/'+str(filename))
+    filename=f'unit_{instance.unit.id}.'+ext
+    return os.path.join(f'course_material/class_{instance.class_name.id}/{instance.subject.id}/unit_{instance.unit.id}/'+str(filename))
 
 class CourseMaterial(models.Model):
     class_name   = models.ForeignKey(Class,on_delete=models.CASCADE)
