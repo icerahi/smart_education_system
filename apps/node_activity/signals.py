@@ -9,6 +9,7 @@ from django.http import request
 
 from apps.course_material.models import CourseMaterial
 from apps.node.models import Node
+from apps.node_activity.consumers import server_ip_address
 from apps.node_activity.models import ActiveNode
 
 #disable node from dashboard
@@ -27,17 +28,20 @@ def disable_node(sender,instance,**kwargs):
             pass
 
 
+
+###COURSE MATERIAL REALTIME NOT NEED IT WILL MAKE HASSLE ,ALL CONTENT WILL GET WHEN NOODE RESTART
 @receiver(post_save,sender=CourseMaterial)
 def send_course_material(sender,instance,created,**kwargs):
 
     async_to_sync(channel_layer.group_send)(f'class_group_{instance.class_name.name}',
                                                 {
                                                     'type':'send_course_material',
-                                                    'data':json.dumps({'course_material':{instance.subject.name:[[
-                                                        instance.unit.name,
-                                                        instance.unit_name,
-                                                        instance.content.url]
-                                                    ]}})
+                                                    'data':json.dumps({'course_material':{"content_id":instance.id,
+                                                                                          "class_name":instance.class_name.name,
+                                                                                          "subject":instance.subject.name,
+                                                                                          "unit":instance.unit.name,
+                                                                                          "unit_name":instance.unit_name,
+                                                                                          "content":server_ip_address()+":8000"+instance.content.url}})
                                                 })
 
  

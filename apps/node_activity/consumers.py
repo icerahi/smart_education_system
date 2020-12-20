@@ -8,8 +8,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from apps.course_material.models import CourseMaterial
 from apps.node.models import Node
 import json
-
+import socket
 from apps.node_activity.models import ActiveNode
+
+def server_ip_address():
+    s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8",80))
+    return "http://"+s.getsockname()[0]
 
 #active node delete function
 def delete_node(channel_name):
@@ -23,12 +28,8 @@ def get_school_name(node):
 
 def get_course_material(class_name):
     course_material=CourseMaterial.objects.filter(class_name__name=class_name)
-    data = dict()
-    for subject in course_material:
-        data[subject.subject.name]=list()
+    data = [{"content_id":i.id,"class_name":i.class_name.name,"subject":i.subject.name,"unit":i.unit.name,"unit_name":i.unit_name,"content":server_ip_address()+":8000"+i.content.url} for i in course_material]
 
-    for content in course_material:
-        data[content.subject.name].append([content.unit.name,content.unit_name,content.content.url])
     return json.dumps({"course_material":data})
 
 
