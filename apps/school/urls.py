@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('',views.SchoolCreateAndListView.as_view(),name='school'),
-    path('<int:pk>/<slug>/',views.SchoolDetailAndUpdateView.as_view(),name='school_detail'),
+    path('<int:pk>/',views.SchoolDetailAndUpdateView.as_view(),name='school_detail'),
 ]

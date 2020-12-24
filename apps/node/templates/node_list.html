@@ -47,13 +47,13 @@
                        <a href="" class=" btn-secondary btn-sm"> <i class="fe fe-bar-chart-2"></i> Show Data</a>
                   </td>
                     <td>
-                       <a href="{% url 'node:node_detail' pk=object.pk slug=object.slug %}" class=" btn-secondary btn-sm"> <i class="fe fe-bar-chart-2"></i> Show Details</a>
+                       <a href="{% url 'node:node_detail' pk=object.pk  %}" class=" btn-secondary btn-sm"> <i class="fe fe-bar-chart-2"></i> Show Details</a>
                   </td>
                     <td>
                       {% if object.status == 'enable' %}
-                       <a href="{% url 'node:enable_disable' pk=object.pk slug=object.slug %}" class=" btn-success btn-sm"> <i class="fe fe-bar-chart-2"></i>Enable</a>
+                       <a href="{% url 'node:enable_disable' pk=object.pk %}" class=" btn-success btn-sm"> <i class="fe fe-bar-chart-2"></i>Enable</a>
                       {% else %}
-                        <a href="{% url 'node:enable_disable' pk=object.pk slug=object.slug %}" class=" btn-danger btn-sm"> <i class="fe fe-bar-chart-2"></i>Disable</a>
+                        <a href="{% url 'node:enable_disable' pk=object.pk %}" class=" btn-danger btn-sm"> <i class="fe fe-bar-chart-2"></i>Disable</a>
                       {% endif %}
 
                   </td>

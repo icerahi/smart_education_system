@@ -1,5 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from django.urls import reverse_lazy
@@ -36,8 +36,8 @@ class NodeDetailAndUpdateView(SuccessMessageMixin,UpdateView):
         context['object']=object
         return context
 
-def enable_disable(request,pk,slug):
-    node = Node.objects.get(pk=pk,slug=slug)
+def enable_disable(request,pk):
+    node = get_object_or_404(Node,pk=pk)
     if node.status == 'disable':
         node.status='enable'
         node.save()

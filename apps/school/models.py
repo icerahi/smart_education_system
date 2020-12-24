@@ -4,9 +4,10 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.urls import reverse_lazy, reverse
-from django.utils.text import slugify
+
 
 from smart_selects.db_fields import ChainedForeignKey
+
 
 
 class Division(models.Model):
@@ -65,7 +66,6 @@ class Union(models.Model):
 class School(models.Model):
     name        = models.CharField(max_length=100)
     school_id   = models.AutoField(primary_key=True,unique=True)
-    slug        = models.SlugField()
     division    = models.ForeignKey(Division,on_delete=models.CASCADE)
     district    = ChainedForeignKey(District,chained_field='division',chained_model_field='division',
                                     show_all=False,auto_choose=True,sort=True)
@@ -88,13 +88,8 @@ class School(models.Model):
         verbose_name_plural = "Schools"
 
     def get_absolute_url(self):
-        return reverse_lazy('school:school_detail',kwargs={'pk':self.pk,'slug':self.slug})
+        return reverse_lazy('school:school_detail',kwargs={'pk':self.pk,})
 
-
-
-@receiver(pre_save,sender=School)
-def pre_save_slug(sender,instance,**kwargs):
-   instance.slug = slugify(instance.name)
 
 
 

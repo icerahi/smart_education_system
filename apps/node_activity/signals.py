@@ -14,6 +14,7 @@ from apps.node_activity.models import ActiveNode
 
 #disable node from dashboard
 from apps.notice.models import Notice
+from apps.school.models import School
 
 channel_layer = get_channel_layer()
 
@@ -32,8 +33,8 @@ def disable_node(sender,instance,**kwargs):
 ###COURSE MATERIAL REALTIME NOT NEED IT WILL MAKE HASSLE ,ALL CONTENT WILL GET WHEN NOODE RESTART
 @receiver(post_save,sender=CourseMaterial)
 def send_course_material(sender,instance,created,**kwargs):
-
-    async_to_sync(channel_layer.group_send)(f'class_group_{instance.class_name.name}',
+    try:
+        async_to_sync(channel_layer.group_send)(f'class_group_{instance.class_name.name}',
                                                 {
                                                     'type':'send_course_material',
                                                     'data':json.dumps({'course_material':{"content_id":instance.id,
@@ -43,13 +44,29 @@ def send_course_material(sender,instance,created,**kwargs):
                                                                                           "unit_name":instance.unit_name,
                                                                                           "content":server_ip_address()+":8000"+instance.content.url}})
                                                 })
-
+    except:
+        pass
  
 @receiver(post_save,sender=Notice)
 def send_notice(sender,instance,**kwargs):
     if instance.status=='published':
-        async_to_sync(channel_layer.group_send)('public',{
-            'type':'send_notice',
-            'data':json.dumps({'notice':{'title':instance.title,'body':instance.body}}),
-        })
+        try:
+            async_to_sync(channel_layer.group_send)('public',{
+                'type':'send_notice',
+                'data':json.dumps({'notice':{'title':instance.title,'body':instance.body}}),
+            })
+        except:
+            pass
 
+
+
+
+@receiver(post_save,sender=School)
+def post_save_and_school_name(sender,instance,**kwargs):
+    try:
+        nodes=Node.objects.filter(school_id=instance.school_id)
+        for node in nodes:
+            node.school_name = instance.name
+            node.save()
+    except:
+        pass

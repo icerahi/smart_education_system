@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
-from django.utils.text import slugify
+
 
 from apps.course_material.models import Class
 from apps.school.models import School
@@ -26,7 +26,6 @@ class Node(models.Model):
     school_id     = models.ForeignKey(School,on_delete=models.CASCADE)
     school_name = models.CharField(max_length=100)
     class_name  = models.ForeignKey(Class,on_delete=models.DO_NOTHING)
-    slug        = models.SlugField()
     status      = models.CharField(max_length=15,choices=STATUS_CHOICES,default='disable')
 
 
@@ -41,8 +40,9 @@ class Node(models.Model):
 
 
 @receiver(pre_save,sender=Node)
-def pre_save_slug_and_school_name(sender,instance,**kwargs):
+def pre_save_and_school_name(sender,instance,**kwargs):
     instance.school_name = instance.school_id.name
-    instance.slug  = slugify(instance.school_name+f'-{instance.class_name}')
+
+
 
 # status signal send to channel
