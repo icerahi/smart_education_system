@@ -152,7 +152,7 @@ STATIC_ROOT = BASE_DIR /'static-root'
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
-
+#rich text editor
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
