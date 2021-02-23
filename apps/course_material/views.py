@@ -73,6 +73,9 @@ class ContentUpdateView(SuccessMessageMixin,UpdateView):
         return reverse_lazy('course_material:get_content',kwargs={'class_name':self.kwargs['class_name'],
                                                                   'subject':self.kwargs['subject']})
 
+    def form_valid(self,form):
+        return super(ContentUpdateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(ContentUpdateView, self).get_context_data(**kwargs)
         context['classes']=Class.objects.all()

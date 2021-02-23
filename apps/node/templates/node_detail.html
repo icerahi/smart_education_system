@@ -1,0 +1,59 @@
+ {% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="card mt-3">
+                      <h4 class="card-title text-center p-1">Node Details</h4>
+
+    <div class="card-body">
+           <button type="submit" data-toggle="modal" data-target="#node_update_modal"  class="btn btn-rounded btn-sm float-right btn-danger btn-icon-text">
+                          Edit  <i class="icon-square-check"></i>
+                   </button>
+
+        <!-- Grid row -->
+<div class="row">
+
+  <!-- Grid column -->
+  <div class="col-md-10 col-10">
+
+    <div class="media d-block d-md-flex">
+
+      <div class="media-body text-center text-md-left ml-md-3 ml-0">
+
+                 <p class="display-7 text-dark font-weight-bold"> Node ID  :  <span class="lead ">  {{ object.node_id }}</span></p>
+                 <p class="display-7 font-weight-bold"> Ip Address : <span class="lead "> <mark>{{ object.ip_address }}</mark></span></p>
+                <p class="display-7 font-weight-bold"> Port : <span class="lead">   {{ object.port }}</span></p>
+                <p class="display-7 font-weight-bold"> Mac Address : <span class="lead">  {{ object.mac_address }}</span></p>
+          <hr>
+              <p class="display-7 font-weight-bold"> Class : <span class="lead"> {{ object.class_name }} </span> </p>
+                <p class="display-7 font-weight-bold"> School Name : <span class="lead"> {{ object.school_name }} </span> </p>
+             <p class="display-7 font-weight-bold"> School Id : <span class="lead"> {{ object.school_id }} </span> </p>
+
+          <p class="display-7 font-weight-bold"> Division :  <span class="lead">  {{ object.school_id.division.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> District  :  <span class="lead">  {{ object.school_id.district.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Upazila  :  <span class="lead">  {{ object.school_id.upazila.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Union  :  <span class="lead">  {{ object.school_id.union.name }} </span> </p>
+                <p class="display-7 font-weight-bold"> Village  : <span class="lead">  {{ object.school_id.village }} </span> </p>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Grid column -->
+
+
+</div>
+<!-- Grid row -->
+
+
+</div>
+</div>
+
+
+{% include 'node_update_modal.html' %}
+
+
+{% endblock %}
+
+

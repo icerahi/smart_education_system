@@ -1,4 +1,5 @@
-
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from ckeditor.fields import RichTextField,RichTextFormField
 from django.db import models
 
@@ -40,6 +41,5 @@ def pre_save_status(sender,instance,**kwargs):
        instance.published=True
     if instance.status == 'archived':
         instance.archived = True
-
 
 
