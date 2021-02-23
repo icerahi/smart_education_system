@@ -20,7 +20,7 @@ class NoticeListAndCreateView(SuccessMessageMixin,CreateView):
     error_message   = "<strong>Error Creating New Notice ! </strong> \n Check the Create Form"
 
     def form_invalid(self, form):
-        messages(self.request,self.error_message)
+        messages.error(self.request,self.error_message)
         return super(NoticeListAndCreateView, self).form_invalid(form)
 
     def get_context_data(self, **kwargs):

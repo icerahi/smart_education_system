@@ -32,18 +32,20 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # thirdparty
+    'channels',
+    'import_export',
+    'smart_selects',
+    'django_cleanup',
+    'ckeditor',
+    'rest_framework',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #thirdparty
-    'import_export',
-    'smart_selects',
-    'django_cleanup',
-    'ckeditor',
-
 
 
     #own
@@ -53,6 +55,8 @@ INSTALLED_APPS = [
     'apps.course_material',
     'apps.notice',
     'apps.class_routine',
+    'apps.node',
+    'apps.node_activity', #modified it's __init__ and app file to work signals
 ]
 
 MIDDLEWARE = [
@@ -85,7 +89,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smart_education_system.wsgi.application'
-
+ASGI_APPLICATION = 'smart_education_system.routing.application'
 
 
 # Database
@@ -95,7 +99,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+
 }
 
 
@@ -147,7 +152,7 @@ STATIC_ROOT = BASE_DIR /'static-root'
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
-
+#rich text editor
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
@@ -162,4 +167,15 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'CustomToolbarConfig',
         'tabSpaces': 4,
     }
+}
+
+#redis channel layer
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+
+    },
 }

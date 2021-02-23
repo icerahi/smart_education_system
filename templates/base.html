@@ -5,6 +5,9 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title %} {% endblock title%}</title>
   <!-- base:css -->
@@ -35,7 +38,7 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding:0;">
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -159,8 +162,8 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">
+          <li class="nav-item {% if url_name == 'node' or url_name == 'node_detail' %}active {% endif %}">
+            <a class="nav-link" href="{% url 'node:node' %}">
               <i class="icon-monitor menu-icon"></i>
               <span class="menu-title">Node Info</span>
              </a>

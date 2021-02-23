@@ -5,11 +5,63 @@
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
               <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
-              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
+              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019 </p>
             </div>
           </div>
+<div class="card-body">
+                  <h4 class="card-title">All Active Node Are Below!</h4>
+                  <p class="card-description">
+                  <mark><a href="/">Refresh</a></mark>
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-striped ">
+                      <thead>
+                        <tr>
+                          <th>
+                            Node Id
+                          </th>
+                           <th>
+                            School ID/Name
+                          </th>
+
+                          <th>
+                            Single Group
+                          </th>
+                            <th>
+                            Class Group
+                          </th>
+                          <th>
+                             Online At
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                    {% for node in active_node %}
+                        <tr class="bg-success">
+                          <td>
+                            {{ node.node_id }}
+                          </td>
+                          <td>
+                     {{ node.node.school_id}}/{{node.node.school_name}}
+                          </td>
+                            <td>
+                               {{node.single_group}}
+                           </td>
+                            <td>
+                               {{node.class_group}}
+                           </td>
+                            <td>
+                               {{node.created}}
+                           </td>
+                  {% endfor %}
+                        </tr>
 
 
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
 
         </div>
 {% endblock body %}

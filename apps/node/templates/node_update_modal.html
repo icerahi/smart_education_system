@@ -1,0 +1,120 @@
+
+
+<!-- Central Modal Small -->
+<div class="modal fade" id="node_update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg modal-notify modal-warning" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Create a New Node</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-12 grid-margin">
+            <p class="display4 text-dark"> Node Information</p>
+                  <form class="form-sample" action="" method="POST" enctype="multipart/form-data">
+                       <p class="text-danger"> {{ form.non_field_errors.as_text}}</p>
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-md-3  col-form-label">Ip Address</label>
+                          <div class="col-sm-9 col-md-9 ">
+                         <p class="text-danger">{{ form.ip_address.errors }}</p>
+                           {{ form.ip_address}}
+                          </div>
+                        </div>
+                      </div>
+                     <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-md-3  col-form-label">Port</label>
+                          <div class="col-sm-9 col-md-9 ">
+                            <p class="text-danger">{{ form.port.errors }}</p>
+                           {{ form.port }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-md-3  col-form-label">Mac Address</label>
+                          <div class="col-sm-9 col-md-9 ">
+                  <p class="text-danger">{{ form.mac_address.errors }}</p>
+                            {{ form.mac_address }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        <p class="display4 text-dark"> School Information</p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-md-3  col-form-label">School ID</label>
+                          <div class="col-sm-9 col-md-9 ">
+                  <p class="text-danger">{{ form.school_id.errors }}</p>
+                            {{ form.school_id }}
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-form-label"> School Name : <span class="font-weight-bold"> {{object.school_name}}</span> </label>
+
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-md-3  col-form-label">Class Name</label>
+                          <div class="col-sm-9 col-md-9 ">
+                  <p class="text-danger">{{ form.class_name.errors }}</p>
+                            {{ form.class_name }}
+                          </div>
+                        </div>
+                      </div>
+
+                     <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-md-3 col-sm-3 col-form-label">Status</label>
+                          <div class="col-sm-9 col-md-9">
+                  <p class="text-danger">{{ form.status.errors }}</p>
+
+                           {{ form.status }}
+                          </div>
+                        </div>
+                      </div>
+
+                   </div>
+
+
+            </div>
+
+                 <input type="hidden" name="previous" value="{{request.get_full_path}}" />
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="reset" class="btn btn-outline-warning btn-icon-text">
+          <i class="mdi mdi-reload btn-icon-prepend"></i>Reset</button>
+
+        <button type="submit" class="btn btn-outline-success btn-icon-text">
+                          <i class="mdi mdi-file-check btn-icon-prepend"></i>
+                          Save
+                        </button>
+      </div>
+
+                  </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Central Modal Small -->
