@@ -1,5 +1,5 @@
 # smart_education_system
-IOT based Smart Education System
+IOT based Smart Education System.
 
 It was an initial prototype of a centralized primary
 smart education system where a classroom’s whiteboard will be replaced
